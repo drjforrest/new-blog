@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Simplified color system with semantic naming */
+    --primary: 26 58 92; /* Deep Blue */
+    --accent: 214 40 40; /* Crimson Red */
+    --success: 42 157 143; /* Emerald Green */
+    --neutral: 43 45 66; /* Charcoal Gray */
+    --background: 244 241 222; /* Ivory */
+    
+    /* System colors */
+    --foreground: var(--neutral);
+    --muted: 112 66 20; /* Earth Brown */
+  }
+
+  [data-theme='dark'] {
+    --primary: 42 157 143; /* Emerald Green becomes primary in dark mode */
+    --background: 43 45 66; /* Charcoal becomes background */
+    --foreground: 244 241 222; /* Ivory becomes text */
+    --muted: 214 40 40; /* Crimson becomes muted */
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Base heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-2 outline-accent outline-offset-2;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-background rounded-lg shadow-md transition-transform duration-300 hover:translate-y-[-4px] hover:shadow-lg;
+  }
+
+  .button {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200
+           bg-primary text-background hover:bg-primary/90
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .link {
+    @apply text-primary hover:text-accent transition-colors duration-200
+           underline-offset-4 hover:underline;
+  }
+}
+
+/* Simple fade animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
