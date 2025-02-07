@@ -1,4 +1,4 @@
-import { type Theme } from 'next-themes';
+type Theme = 'light' | 'dark' | 'system';
 
 // Format large numbers with K, M, B suffixes
 export function formatNumber(num: number): string {
@@ -24,12 +24,12 @@ export function getChartColors(theme: Theme | undefined) {
   const isDark = theme === 'dark';
   
   return {
-    primary: isDark ? '#2A9D8F' : '#1A3A5C',
-    accent: isDark ? '#D62828' : '#D62828',
-    success: isDark ? '#3CBDAF' : '#2A9D8F',
-    neutral: isDark ? '#4B4D62' : '#2B2D42',
-    background: isDark ? '#2B2D42' : '#F4F1DE',
-    foreground: isDark ? '#F4F1DE' : '#2B2D42',
+    primary: isDark ? '#3B82F6' : '#2563EB',    // Blue
+    accent: isDark ? '#F59E0B' : '#D97706',     // Amber
+    success: isDark ? '#10B981' : '#059669',    // Emerald
+    neutral: isDark ? '#6B7280' : '#4B5563',    // Gray
+    foreground: isDark ? '#F3F4F6' : '#1F2937', // Text
+    background: isDark ? '#1F2937' : '#FFFFFF',  // Background
   };
 }
 

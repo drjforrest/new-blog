@@ -6,206 +6,117 @@ import {
   Line,
   BarChart,
   Bar,
-  PieChart,
-  Pie,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
+  ResponsiveContainer
 } from 'recharts';
-import { Card } from '@/components/ui/card';
 
-const implementationData = [
-  {
-    year: 2015,
-    infrastructure: 25,
-    skills: 30,
-    innovation: 20,
-    policy: 35,
-    ai_adoption: 10,
-    broadband_expansion: 15,
-  },
-  {
-    year: 2017,
-    infrastructure: 35,
-    skills: 40,
-    innovation: 32,
-    policy: 45,
-    ai_adoption: 18,
-    broadband_expansion: 25,
-  },
-  {
-    year: 2019,
-    infrastructure: 48,
-    skills: 52,
-    innovation: 45,
-    policy: 58,
-    ai_adoption: 30,
-    broadband_expansion: 40,
-  },
-  {
-    year: 2021,
-    infrastructure: 62,
-    skills: 65,
-    innovation: 58,
-    policy: 72,
-    ai_adoption: 50,
-    broadband_expansion: 60,
-  },
-  {
-    year: 2023,
-    infrastructure: 75,
-    skills: 78,
-    innovation: 70,
-    policy: 85,
-    ai_adoption: 70,
-    broadband_expansion: 80,
-  },
+interface ChartProps {
+  type: 'digital-access' | 'skills-development' | 'infrastructure' | 'innovation';
+}
+
+const digitalAccessData = [
+  { year: '2019', kenya: 85, nigeria: 78, rwanda: 82, southAfrica: 89 },
+  { year: '2020', kenya: 87, nigeria: 80, rwanda: 85, southAfrica: 90 },
+  { year: '2021', kenya: 89, nigeria: 83, rwanda: 88, southAfrica: 92 },
+  { year: '2022', kenya: 91, nigeria: 85, rwanda: 90, southAfrica: 93 },
+  { year: '2023', kenya: 93, nigeria: 87, rwanda: 92, southAfrica: 95 },
 ];
 
-const regionalProgress = [
-  { region: "East Africa", progress: 72, target: 85 },
-  { region: "West Africa", progress: 68, target: 85 },
-  { region: "North Africa", progress: 75, target: 85 },
-  { region: "Southern Africa", progress: 70, target: 85 },
-  { region: "Central Africa", progress: 58, target: 85 },
+const skillsData = [
+  { year: '2019', kenya: 45, nigeria: 42, rwanda: 48, southAfrica: 52 },
+  { year: '2020', kenya: 48, nigeria: 45, rwanda: 52, southAfrica: 55 },
+  { year: '2021', kenya: 52, nigeria: 48, rwanda: 55, southAfrica: 58 },
+  { year: '2022', kenya: 55, nigeria: 52, rwanda: 58, southAfrica: 62 },
+  { year: '2023', kenya: 58, nigeria: 55, rwanda: 62, southAfrica: 65 },
 ];
 
-const ecommerceLegislation = [
-  {
-    region: "East Africa",
-    e_transactions: 75,
-    consumer_protection: 50,
-    privacy: 55,
-    cybercrime: 65,
-  },
-  {
-    region: "West Africa",
-    e_transactions: 60,
-    consumer_protection: 40,
-    privacy: 50,
-    cybercrime: 55,
-  },
-  {
-    region: "North Africa",
-    e_transactions: 80,
-    consumer_protection: 60,
-    privacy: 70,
-    cybercrime: 75,
-  },
-  {
-    region: "Southern Africa",
-    e_transactions: 85,
-    consumer_protection: 70,
-    privacy: 75,
-    cybercrime: 80,
-  },
-  {
-    region: "Central Africa",
-    e_transactions: 50,
-    consumer_protection: 30,
-    privacy: 40,
-    cybercrime: 45,
-  },
+const infrastructureData = [
+  { year: '2019', kenya: 62, nigeria: 58, rwanda: 65, southAfrica: 72 },
+  { year: '2020', kenya: 65, nigeria: 60, rwanda: 68, southAfrica: 75 },
+  { year: '2021', kenya: 68, nigeria: 63, rwanda: 72, southAfrica: 78 },
+  { year: '2022', kenya: 72, nigeria: 65, rwanda: 75, southAfrica: 80 },
+  { year: '2023', kenya: 75, nigeria: 68, rwanda: 78, southAfrica: 83 },
 ];
 
-const aiInvestment = [
-  { name: "East Africa", value: 70, color: "#3B82F6" },
-  { name: "West Africa", value: 60, color: "#10B981" },
-  { name: "North Africa", value: 80, color: "#F59E0B" },
-  { name: "Southern Africa", value: 75, color: "#EF4444" },
-  { name: "Central Africa", value: 50, color: "#8B5CF6" },
+const innovationData = [
+  { year: '2019', kenya: 35, nigeria: 32, rwanda: 38, southAfrica: 42 },
+  { year: '2020', kenya: 38, nigeria: 35, rwanda: 42, southAfrica: 45 },
+  { year: '2021', kenya: 42, nigeria: 38, rwanda: 45, southAfrica: 48 },
+  { year: '2022', kenya: 45, nigeria: 42, rwanda: 48, southAfrica: 52 },
+  { year: '2023', kenya: 48, nigeria: 45, rwanda: 52, southAfrica: 55 },
 ];
 
-export function AfricaDevelopmentDashboardChart() {
+const chartColors = {
+  kenya: '#2563eb',
+  nigeria: '#16a34a',
+  rwanda: '#dc2626',
+  southAfrica: '#9333ea',
+};
+
+export function AfricaDevelopmentDashboardChart({ type }: ChartProps) {
+  const getData = () => {
+    switch (type) {
+      case 'digital-access':
+        return { data: digitalAccessData, title: 'Digital Access Index' };
+      case 'skills-development':
+        return { data: skillsData, title: 'Digital Skills Development Score' };
+      case 'infrastructure':
+        return { data: infrastructureData, title: 'Digital Infrastructure Coverage (%)' };
+      case 'innovation':
+        return { data: innovationData, title: 'Digital Innovation Index' };
+      default:
+        return { data: digitalAccessData, title: 'Digital Access Index' };
+    }
+  };
+
+  const { data, title } = getData();
+
   return (
-    <div className="space-y-8">
-      {/* Implementation Progress Chart */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4">Implementation Progress by Year</h3>
-        <div className="h-[400px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={implementationData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="year" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="infrastructure" stroke="#3B82F6" name="Infrastructure" />
-              <Line type="monotone" dataKey="skills" stroke="#10B981" name="Skills & Capacity" />
-              <Line type="monotone" dataKey="innovation" stroke="#F59E0B" name="Innovation" />
-              <Line type="monotone" dataKey="policy" stroke="#EF4444" name="Policy Framework" />
-              <Line type="monotone" dataKey="ai_adoption" stroke="#8B5CF6" name="AI Adoption" />
-              <Line type="monotone" dataKey="broadband_expansion" stroke="#F472B6" name="Broadband" />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-      </Card>
-
-      {/* Regional Progress Chart */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4">Regional Implementation Progress</h3>
-        <div className="h-[400px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={regionalProgress}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="region" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="progress" fill="#3B82F6" name="Current Progress" />
-              <Bar dataKey="target" fill="#10B981" name="2025 Target" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </Card>
-
-      {/* E-Commerce Legislation */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4">E-Commerce Legislation Adoption</h3>
-        <div className="h-[400px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={ecommerceLegislation}>
-              <XAxis dataKey="region" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="e_transactions" fill="#3B82F6" name="E-Transaction Laws" />
-              <Bar dataKey="consumer_protection" fill="#10B981" name="Consumer Protection" />
-              <Bar dataKey="privacy" fill="#F59E0B" name="Privacy Laws" />
-              <Bar dataKey="cybercrime" fill="#EF4444" name="Cybercrime Laws" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </Card>
-
-      {/* AI Investment Distribution */}
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4">AI Startup Investment Distribution</h3>
-        <div className="h-[400px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={aiInvestment}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={100}
-                label
-              >
-                {aiInvestment.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-      </Card>
+    <div className="w-full">
+      <h3 className="text-lg font-semibold mb-4 text-foreground">{title}</h3>
+      <div className="w-full h-[400px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="kenya"
+              stroke={chartColors.kenya}
+              name="Kenya"
+              strokeWidth={2}
+            />
+            <Line
+              type="monotone"
+              dataKey="nigeria"
+              stroke={chartColors.nigeria}
+              name="Nigeria"
+              strokeWidth={2}
+            />
+            <Line
+              type="monotone"
+              dataKey="rwanda"
+              stroke={chartColors.rwanda}
+              name="Rwanda"
+              strokeWidth={2}
+            />
+            <Line
+              type="monotone"
+              dataKey="southAfrica"
+              stroke={chartColors.southAfrica}
+              name="South Africa"
+              strokeWidth={2}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

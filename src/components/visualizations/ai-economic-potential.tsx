@@ -3,6 +3,8 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { Card } from '@/components/ui/card';
+import { Info } from 'lucide-react';
+import Link from 'next/link';
 
 const Chart = dynamic(
   () => import('./charts/AIEconomicPotentialChart').then((mod) => mod.AIEconomicPotentialChart),
@@ -21,9 +23,29 @@ const data = [
 export function AIEconomicPotential() {
   return (
     <Card className="p-6">
-      <h3 className="text-lg font-semibold mb-4">AI Economic Impact Breakdown</h3>
+      <div className="flex justify-between items-start mb-4">
+        <h3 className="text-lg font-semibold">AI Economic Impact Breakdown (Trillion USD)</h3>
+        <Link href="/bonus" className="text-sm text-primary hover:underline flex items-center gap-1">
+          <Info className="w-4 h-4" />
+          Data Sources
+        </Link>
+      </div>
+      
+      <div className="text-sm text-content-muted mb-4">
+        <p>Direct Impact: Immediate economic value from AI implementation</p>
+        <p>Indirect Impact: Secondary effects through supply chain</p>
+        <p>Induced Impact: Additional economic activity from increased spending</p>
+      </div>
+
       <div className="h-[300px] w-full">
-        <Chart data={data} />
+        <Chart 
+          data={data} 
+          tooltipFormatter={(value) => `$${value}T`}
+        />
+      </div>
+      
+      <div className="mt-4 text-xs text-content-muted">
+        Source: AI for Africa Blueprint (2021), African Union High-Level Panel Report on AI
       </div>
     </Card>
   );

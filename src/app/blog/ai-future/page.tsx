@@ -1,118 +1,165 @@
-import { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { ClientComponent } from '@/components/visualizations/client-wrapper';
-import Image from 'next/image';
-
-export const metadata: Metadata = {
-  title: "The AI Revolution in Africa: A Path to Transformative Growth | African Digital Development",
-  description: "Exploring the unprecedented opportunities and transformative potential of artificial intelligence across African markets, with a focus on key sectors and implementation progress."
-};
+import { Card } from '@/components/ui/card';
+import { EconomicImpact } from '@/components/visualizations/economic-impact';
+import { SocialDevelopment } from '@/components/visualizations/social-development';
+import { AIGrowthChart } from '@/components/visualizations/charts/AIGrowthChart';
+import { SDGImpactChart } from '@/components/visualizations/charts/SDGImpactChart';
 
 export default function Page() {
   return (
-    <article className="max-w-3xl mx-auto py-8 px-4 sm:px-6">
-
-      {/* Header */}
-      <header className="mb-8">
+    <article className="prose prose-lg dark:prose-invert max-w-none">
+      {/* Header section remains the same */}
+      <div className="mb-12">
         <Link 
-          href="/blog" 
-          className="inline-flex items-center gap-2 text-body-sm text-content-muted hover:text-primary transition-colors mb-8 no-underline"
+          href="/blog"
+          className="inline-flex items-center gap-2 text-foreground/60 hover:text-primary transition-colors group no-underline"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           Back to Blog
         </Link>
+      </div>
 
-        <div className="flex items-center gap-4 text-body-sm text-content-subtle">
+      <header className="mb-12">
+        <div className="flex items-center gap-2 text-sm text-foreground/60 mb-4">
           <span>Jamie Forrest, PhD</span>
           <span>•</span>
           <time dateTime="2024-12-26">December 26, 2024</time>
         </div>
+
+        <h1>The AI Revolution in Africa: A Path to Transformative Growth</h1>
+
+        <p className="lead">
+          Artificial Intelligence presents unprecedented opportunities for Africa's development, 
+          promising to revolutionize economies, transform societies, and accelerate progress toward 
+          sustainable development goals. This technological revolution could become a powerful catalyst 
+          for positive change across the continent.
+        </p>
       </header>
 
-      {/* Banner Image */}
-      <Image 
-        src="/images/ai-future-banner.png"
-        alt="Agenda 2063 Digital Transformation"
-        width={1200} 
-        height={500}
-        className="rounded-lg shadow-lg mx-auto mb-6"
-        priority
-      />
-
-      {/* Blog Title */}
-      <h1 className="text-4xl font-bold tracking-tight mb-6">
-        Agenda 2063: The Digital Transformation of a Continent
-      </h1>
-
-      <p className="mt-4 text-body-sm text-content-subtle">
-        By Jamie Forrest, PhD • <time dateTime="2024-12-26">December 26, 2024</time>
-      </p>
-
-      <div className="prose prose-lg dark:prose-invert max-w-none">
-        <p className="lead">
-          As Africa stands at the threshold of an AI revolution, the continent faces an unprecedented 
-          opportunity to leverage artificial intelligence for transformative growth. With the world's 
-          youngest population—60% under twenty-five—and rapidly increasing digital adoption rates, 
-          Africa is uniquely positioned to harness AI technologies in ways that could fundamentally 
-          reshape its development trajectory.
-        </p>
-
-        <h2>The Economic Potential</h2>
+      <section>
+        <h2>Economic Transformation Through AI</h2>
         <p>
-          The numbers tell a compelling story: AI could add $2.9 trillion in value to the African 
-          economy by 2030, equivalent to a 3% increase in annual GDP growth. Some projections suggest 
-          that AI-based technologies could potentially double the GDP growth rate of African countries 
-          by 2035.
+          The economic potential of AI in Africa is staggering. By 2030, AI could add $2.9 trillion 
+          in value to the African economy – equivalent to a 3% increase in annual GDP growth. This 
+          transformation extends beyond mere numbers, representing fundamental changes in how businesses 
+          operate, markets function, and economies grow.
         </p>
-
         <div className="my-8">
-          <ClientComponent component="AIMarketGrowth" />
+          <EconomicImpact />
         </div>
-
-        <h2>Transforming Key Sectors</h2>
-        <p>
-          The real power of Africa's AI revolution lies in its ability to address longstanding 
-          development challenges through innovative solutions across critical sectors.
-        </p>
-
-        <h3>Healthcare Transformation</h3>
-        <p>
-          AI is revolutionizing healthcare delivery across Africa through multiple pathways. AI-powered 
-          diagnostic tools are achieving accuracy rates exceeding 90% in early disease detection, 
-          particularly in areas like cervical cancer screening and malaria diagnosis.
-        </p>
-
-        <div className="my-8">
-          <ClientComponent component="SectorTransformation" />
+        <div className="my-12">
+          <Card className="p-6">
+            <AIGrowthChart />
+          </Card>
         </div>
+      </section>
 
-        <h2>Youth: Africa's AI Advantage</h2>
+      <section>
+        <h2>Catalyzing Social Development</h2>
         <p>
-          With 60% of its population under twenty-five, Africa possesses a unique demographic advantage 
-          in the AI revolution. This young population, combined with increasing digital literacy and 
-          access to technology, positions the continent to become a major hub for AI innovation and 
-          development.
+          AI's impact extends far beyond economic metrics, offering transformative solutions for 
+          pressing social challenges. From healthcare delivery to educational access, AI technologies 
+          are helping bridge long-standing gaps in social services and development.
         </p>
-
-        <div className="my-8">
-          <ClientComponent component="YouthDevelopment" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-8">
+          <div>
+            <SocialDevelopment />
+          </div>
+          <Card className="p-6">
+            <SDGImpactChart />
+          </Card>
         </div>
+      </section>
 
-        <h2>The Path Forward</h2>
+      {/* Rest of the sections remain the same */}
+      <section>
+        <h2>AI for Africa by Africa</h2>
         <p>
-          While the potential is immense, realizing these opportunities requires strategic focus and 
-          investment. Success stories from across the continent demonstrate that AI can indeed address 
-          crucial development challenges when properly implemented.
+          A crucial aspect of Africa's AI journey is the focus on developing homegrown solutions. 
+          When Africans design and deploy AI applications, societal goals and human rights commitments 
+          like decent work conditions and gender equality are integrated into projects from the beginning.
         </p>
-      </div>
+        <p>
+          This approach ensures:
+        </p>
+        <ul>
+          <li>Solutions tailored to local contexts and needs</li>
+          <li>Integration of African values and priorities</li>
+          <li>Building local capacity and expertise</li>
+          <li>Sustainable and inclusive development</li>
+        </ul>
+      </section>
 
-      <footer className="mt-16 pt-8 border-t border-border/50">
-        <div className="flex flex-wrap gap-2 mb-12">
-          {["AI", "Africa", "Technology", "Development", "Innovation"].map((tag) => (
+      <section>
+        <h2>Digital Identity and Financial Inclusion</h2>
+        <p>
+          One of the most ambitious goals is to provide 99.9% of African citizens with a digital legal 
+          identity by 2030. This initiative is crucial for:
+        </p>
+        <ul>
+          <li>Enabling full participation in the digital economy</li>
+          <li>Improving access to financial services</li>
+          <li>Enhancing government service delivery</li>
+          <li>Supporting transparent governance</li>
+        </ul>
+        <p>
+          Complementing this, AI-powered financial solutions are revolutionizing access to banking 
+          services. Multilingual, voice-based chatbots are providing financial guidance, while mobile 
+          banking platforms are reaching previously underserved populations.
+        </p>
+      </section>
+
+      <section>
+        <h2>Agriculture and Food Security</h2>
+        <p>
+          The agricultural sector stands to benefit significantly from AI adoption. Digital technologies 
+          are addressing inefficiencies in:
+        </p>
+        <ul>
+          <li>Resource allocation and usage</li>
+          <li>Market access and pricing</li>
+          <li>Supply chain management</li>
+          <li>Production optimization</li>
+        </ul>
+        <p>
+          These improvements are particularly significant for smallholder farmers, who form the backbone 
+          of African agriculture.
+        </p>
+      </section>
+
+      <section>
+        <h2>Future Considerations</h2>
+        <p>
+          While the potential is immense, realizing AI's benefits requires addressing several key 
+          challenges:
+        </p>
+        <ul>
+          <li>
+            <strong>Infrastructure Development:</strong> Ensuring reliable power and internet 
+            connectivity across the continent
+          </li>
+          <li>
+            <strong>Skills Development:</strong> Building local AI expertise and technical capabilities
+          </li>
+          <li>
+            <strong>Ethical Framework:</strong> Developing guidelines for responsible AI deployment
+          </li>
+          <li>
+            <strong>Regulatory Environment:</strong> Creating supportive policies while protecting 
+            public interests
+          </li>
+        </ul>
+      </section>
+
+      <footer className="mt-16 pt-8 border-t border-foreground/10">
+        <div className="flex flex-wrap gap-2 mb-8">
+          {["AI", "Innovation", "Development", "Digital Economy", "Social Impact"].map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-surface-muted text-content-muted"
+              className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-primary/5 text-primary"
             >
               {tag}
             </span>
@@ -122,9 +169,9 @@ export default function Page() {
         <nav className="flex justify-between items-center gap-4">
           <Link
             href="/blog/agenda-2063"
-            className="group flex items-center gap-2 text-content-muted hover:text-primary transition-colors no-underline"
+            className="group flex items-center gap-2 text-foreground/60 hover:text-primary transition-colors no-underline"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <div>
               <div className="text-sm">Previous</div>
               <div className="font-medium">Agenda 2063</div>
@@ -132,13 +179,13 @@ export default function Page() {
           </Link>
           <Link
             href="/blog/transformation-risks"
-            className="group flex items-center gap-2 text-content-muted hover:text-primary transition-colors ml-auto no-underline text-right"
+            className="group flex items-center gap-2 text-foreground/60 hover:text-primary transition-colors no-underline"
           >
-            <div>
+            <div className="text-right">
               <div className="text-sm">Next</div>
               <div className="font-medium">Digital Transformation Risks</div>
             </div>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </nav>
       </footer>

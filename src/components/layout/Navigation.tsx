@@ -22,8 +22,8 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { href: '/blog', icon: FileText, label: 'Blog' },
-    { href: '/apps', icon: Grid2X2, label: 'Apps' },
+    { href: '/', icon: FileText, label: 'Blog Home' },
+    { href: '/bonus', icon: Grid2X2, label: 'Dashboards' },
   ];
 
   return (
@@ -37,9 +37,11 @@ export default function Navigation() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="h-16 flex items-center justify-between">
           <div className="flex items-center space-x-8">
-            <Link 
-              href="/" 
+            <a 
+              href="https://drjforrest.com" 
               className="flex items-center gap-2.5 group"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <motion.div 
                 whileHover={{ scale: 1.05 }}
@@ -50,7 +52,7 @@ export default function Navigation() {
               <span className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                 Dr. Jamie I. Forrest
               </span>
-            </Link>
+            </a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">

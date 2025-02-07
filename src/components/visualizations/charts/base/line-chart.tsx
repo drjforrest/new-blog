@@ -22,6 +22,7 @@ interface LineChartProps {
     dataKey: string;
     name: string;
     color?: string;
+    strokeWidth?: number;
   }>;
   xAxisDataKey: string;
   yAxisLabel?: string;
@@ -43,8 +44,8 @@ export function LineChart({
   grid = true,
   animationDuration = 1500,
 }: LineChartProps) {
-  const { theme } = useTheme();
-  const colors = getChartColors(theme);
+  const { resolvedTheme: theme } = useTheme();
+  const colors = getChartColors(theme as 'light' | 'dark' | 'system' | undefined);
 
   return (
     <motion.div
@@ -117,7 +118,7 @@ export function LineChart({
               dataKey={line.dataKey}
               name={line.name}
               stroke={line.color || colors.primary}
-              strokeWidth={2}
+              strokeWidth={line.strokeWidth || 2}
               dot={false}
               activeDot={{
                 r: 6,

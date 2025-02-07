@@ -1,23 +1,24 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['example.com'],
-  },
-  i18n: {
-    locales: ['en', 'fr', 'es'],
-    defaultLocale: 'en',
-  },
-  async redirects() {
-    return [
+    remotePatterns: [
       {
-        source: '/old-page',
-        destination: '/new-page',
-        permanent: true,
+        protocol: 'https',
+        hostname: 'drjforrest.com',
       },
-    ];
+    ],
+    unoptimized: true,
   },
   webpack: (config, { isServer }) => {
+    // Handle SVG files
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+
+    // Handle client-side modules
     if (!isServer) {
       config.resolve.fallback = {
         fs: false,
@@ -25,6 +26,7 @@ const nextConfig = {
         tls: false,
       };
     }
+
     return config;
   },
 };

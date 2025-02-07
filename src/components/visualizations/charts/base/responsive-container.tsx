@@ -2,37 +2,40 @@
 
 import React from 'react';
 import { ResponsiveContainer as RechartsContainer } from 'recharts';
+import { motion } from 'framer-motion';
 
 interface ResponsiveContainerProps {
-  children: React.ReactNode;
-  aspectRatio?: number;
+  children: React.ReactElement;
   minHeight?: number;
+  aspectRatio?: number;
+  className?: string;
 }
 
 export function ResponsiveContainer({
   children,
-  aspectRatio = 16/9,
   minHeight = 300,
+  aspectRatio = 16/9,
+  className = '',
 }: ResponsiveContainerProps) {
   return (
-    <div
-      style={{
-        width: '100%',
-        paddingBottom: `${(1 / aspectRatio) * 100}%`,
-        minHeight: `${minHeight}px`,
+    <div className={className}>
+      <div style={{ 
         position: 'relative',
-      }}
-    >
-      <div style={{
-        position: 'absolute',
         width: '100%',
-        height: '100%',
-        top: 0,
-        left: 0,
+        paddingBottom: `${(1/aspectRatio) * 100}%`,
+        minHeight: minHeight,
       }}>
-        <RechartsContainer width="100%" height="100%">
-          {children}
-        </RechartsContainer>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        }}>
+          <RechartsContainer width="100%" height="100%">
+            {children}
+          </RechartsContainer>
+        </div>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import {
   PolarRadiusAxis,
   Radar,
   ResponsiveContainer,
+  Tooltip,
 } from 'recharts';
 
 interface InfrastructureGapsChartProps {
@@ -16,24 +17,29 @@ interface InfrastructureGapsChartProps {
     urban: number;
     rural: number;
   }>;
+  tooltipFormatter?: (value: number) => string;
 }
 
-export function InfrastructureGapsChart({ data }: InfrastructureGapsChartProps) {
+export function InfrastructureGapsChart({ 
+  data,
+  tooltipFormatter = (value) => `${value}%`
+}: InfrastructureGapsChartProps) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart data={data}>
         <PolarGrid />
         <PolarAngleAxis dataKey="metric" />
         <PolarRadiusAxis angle={30} domain={[0, 100]} />
+        <Tooltip formatter={tooltipFormatter} />
         <Radar 
-          name="Urban" 
+          name="Urban Areas" 
           dataKey="urban" 
           stroke="#3B82F6" 
           fill="#3B82F6" 
           fillOpacity={0.6} 
         />
         <Radar 
-          name="Rural" 
+          name="Rural Areas" 
           dataKey="rural" 
           stroke="#10B981" 
           fill="#10B981" 

@@ -56,7 +56,7 @@ const data = [
   },
 ];
 
-const COLORS = {
+const COLORS: { [key: string]: string } = {
   Kenya: '#4A90E2',    // Blue
   Rwanda: '#2ECC71',   // Green
   Nigeria: '#F1C40F',  // Yellow
@@ -134,29 +134,32 @@ export default function DigitalTransformationLeadership() {
           <Legend
             align="right"
             verticalAlign="top"
-            content={({ payload }) => (
-              <div className="flex flex-wrap gap-4 justify-center mb-4">
-                {payload.map((entry) => (
-                  <motion.div
-                    key={entry.value}
-                    whileHover={{ scale: 1.05 }}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full cursor-pointer transition-colors
-                              ${activeCountry === entry.value ? 'bg-foreground/10' : 'hover:bg-foreground/5'}`}
-                    onClick={() => setActiveCountry(
-                      activeCountry === entry.value ? null : entry.value
-                    )}
-                  >
-                    <div
-                      className="w-3 h-3 rounded-full"
-                      style={{ backgroundColor: entry.color }}
-                    />
-                    <span className="text-sm text-foreground/80">
-                      {entry.value}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            )}
+            content={({ payload }) => {
+              if (!payload) return null;
+              return (
+                <div className="flex flex-wrap gap-4 justify-center mb-4">
+                  {payload.map((entry) => (
+                    <motion.div
+                      key={entry.value}
+                      whileHover={{ scale: 1.05 }}
+                      className={`flex items-center gap-2 px-3 py-1.5 rounded-full cursor-pointer transition-colors
+                                ${activeCountry === entry.value ? 'bg-foreground/10' : 'hover:bg-foreground/5'}`}
+                      onClick={() => setActiveCountry(
+                        activeCountry === entry.value ? null : entry.value
+                      )}
+                    >
+                      <div
+                        className="w-3 h-3 rounded-full"
+                        style={{ backgroundColor: entry.color }}
+                      />
+                      <span className="text-sm text-foreground/80">
+                        {entry.value}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              );
+            }}
           />
         </RadarChart>
       </ResponsiveContainer>

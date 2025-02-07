@@ -49,8 +49,8 @@ export function BarChart({
   animationDuration = 1500,
   colorByValue = false,
 }: BarChartProps) {
-  const { theme } = useTheme();
-  const colors = getChartColors(theme);
+  const { resolvedTheme: theme } = useTheme();
+  const colors = getChartColors(theme as 'light' | 'dark' | 'system' | undefined);
 
   // Calculate color scale for colorByValue option
   const getBarColor = (value: number) => {
