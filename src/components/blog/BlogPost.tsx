@@ -3,11 +3,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 interface BlogPostLayoutProps {
   title: string;
   date: string;
+  readingTime?: string;
+  category?: string;
   description?: string;
   content: React.ReactNode;
 }
@@ -15,6 +18,8 @@ interface BlogPostLayoutProps {
 export default function BlogPostLayout({
   title,
   date,
+  readingTime,
+  category,
   description,
   content
 }: BlogPostLayoutProps) {
@@ -30,69 +35,93 @@ export default function BlogPostLayout({
       animate="animate"
       className="max-w-4xl mx-auto px-4 py-12"
     >
+      {/* Back Button */}
       <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
         <Link 
           href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-foreground/70 hover:text-primary transition-colors mb-8 group"
+          className="inline-flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors mb-8 
+                    px-4 py-2 rounded-lg hover:bg-primary/5 group"
         >
-          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+          <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
           Back to all posts
         </Link>
       </motion.div>
       
-      <header className="mb-8 border-b border-foreground/10 pb-8">
-        <motion.h1 
-          {...fadeInUp} 
-          transition={{ delay: 0.2 }}
-          className="text-4xl font-bold mb-4 text-foreground"
-        >
-          {title}
-        </motion.h1>
-        
-        {description && (
-          <motion.p 
-            {...fadeInUp}
-            transition={{ delay: 0.3 }}
-            className="text-xl text-foreground/70 mb-4"
-          >
-            {description}
-          </motion.p>
-        )}
-        
-        <motion.time 
-          {...fadeInUp}
-          transition={{ delay: 0.4 }}
-          className="text-foreground/60"
-          dateTime={date}
-        >
-          {new Date(date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </motion.time>
-      </header>
+      {/* Post Header */}
+      <motion.div 
+        {...fadeInUp} 
+        transition={{ delay: 0.2 }}
+      >
+        <Card className="p-8 mb-8 bg-white/90 backdrop-blur-sm shadow-lg border border-primary/10">
+          <header className="space-y-6">
+            {category && (
+              <div className="flex items-center gap-2">
+                <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                  <div className="flex items-center gap-1.5">
+                    <Tag className="w-4 h-4" />
+                    {category}
+                  </div>
+                </div>
+              </div>
+            )}
 
+            <h1 className="text-4xl font-bold text-primary">
+              {title}
+            </h1>
+            
+            {description && (
+              <p className="text-xl leading-relaxed text-foreground/70">
+                {description}
+              </p>
+            )}
+            
+            <div className="flex items-center gap-6 pt-2">
+              <div className="flex items-center gap-2 text-foreground/60">
+                <Calendar className="w-4 h-4" />
+                <time dateTime={date}>
+                  {new Date(date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+              </div>
+              
+              {readingTime && (
+                <div className="flex items-center gap-2 text-foreground/60">
+                  <Clock className="w-4 h-4" />
+                  <span>{readingTime}</span>
+                </div>
+              )}
+            </div>
+          </header>
+        </Card>
+      </motion.div>
+
+      {/* Post Content */}
       <motion.div 
         {...fadeInUp}
-        transition={{ delay: 0.5 }}
-        className="prose prose-lg max-w-none dark:prose-invert
-          prose-headings:text-foreground
-          prose-p:text-foreground/90
-          prose-a:text-primary hover:prose-a:text-primary/80
-          prose-strong:text-foreground
-          prose-code:text-foreground
-          prose-blockquote:text-foreground/80
-          prose-blockquote:border-primary
-          prose-figcaption:text-foreground/70
-          prose-hr:border-foreground/20
-          prose-img:rounded-lg prose-img:shadow-md
-          prose-pre:bg-foreground/5
-          prose-th:text-foreground prose-td:text-foreground/90
-          prose-li:text-foreground/90
-        "
+        transition={{ delay: 0.3 }}
       >
-        {content}
+        <Card className="p-8 bg-white/90 backdrop-blur-sm shadow-lg border border-primary/10">
+          <div className="prose prose-lg max-w-none dark:prose-invert
+            prose-headings:text-primary prose-headings:font-bold
+            prose-p:text-foreground/90 prose-p:leading-relaxed
+            prose-a:text-primary hover:prose-a:text-primary/80
+            prose-strong:text-foreground/90 prose-strong:font-semibold
+            prose-code:text-foreground/90 prose-code:bg-primary/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-blockquote:text-foreground/80 prose-blockquote:border-primary/40 prose-blockquote:bg-primary/5
+            prose-figcaption:text-foreground/70
+            prose-hr:border-primary/10
+            prose-img:rounded-lg prose-img:shadow-lg
+            prose-pre:bg-primary/5 prose-pre:border prose-pre:border-primary/10
+            prose-th:text-foreground prose-td:text-foreground/90
+            prose-li:text-foreground/90 prose-li:marker:text-primary/60
+          "
+          >
+            {content}
+          </div>
+        </Card>
       </motion.div>
     </motion.article>
   );

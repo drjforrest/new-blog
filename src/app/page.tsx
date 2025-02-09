@@ -4,6 +4,7 @@ import { LineChart, ArrowRight, BarChart2, PieChart } from "lucide-react"
 import { getAllPosts } from '@/lib/posts'
 import Link from 'next/link'
 import { motion } from 'framer-motion';
+import { CommentsSection } from '@/components/blog/comments-section';
 
 export default function Home() {
   const posts = getAllPosts()
@@ -72,11 +73,11 @@ export default function Home() {
                   href={`/blog/${post.slug}`}
                   className="group block h-full"
                 >
-                  <div className="relative bg-background rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 
-                                overflow-hidden border border-foreground/5 h-full
+                  <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl 
+                                transition-all duration-300 overflow-hidden border border-primary/10 h-full
                                 transform hover:-translate-y-2 hover:border-primary/20">
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-xl font-semibold text-primary group-hover:text-primary/80 transition-colors duration-300">
                         {post.title}
                       </h3>
                       <p className="mt-3 text-foreground/70 group-hover:text-foreground/90 transition-colors duration-300">
@@ -107,15 +108,15 @@ export default function Home() {
                 href="/bonus"
                 className="group block h-full"
               >
-                <div className="relative bg-background rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 
-                              overflow-hidden border border-primary/10 h-full
-                              transform hover:-translate-y-2 hover:border-primary/30">
+                <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl 
+                              transition-all duration-300 overflow-hidden border border-primary/10 h-full
+                              transform hover:-translate-y-2 hover:border-primary/20">
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
                         <LineChart className="w-6 h-6 text-primary" />
                       </div>
-                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-xl font-semibold text-primary group-hover:text-primary/80 transition-colors duration-300">
                         Interactive Data Dashboards
                       </h3>
                     </div>
@@ -123,7 +124,7 @@ export default function Home() {
                       Explore our collection of interactive data visualizations that provide deeper insights 
                       into Africa's digital transformation journey through rich, multi-layered dashboards.
                     </p>
-                    <div className="mt-4 inline-flex items-center text-primary font-medium group-hover:text-accent transition-colors duration-300">
+                    <div className="mt-4 inline-flex items-center text-primary font-medium group-hover:text-primary/80 transition-colors duration-300">
                       View Interactive Visualizations
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
@@ -134,6 +135,16 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Comments Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+        className="py-24 bg-background border-t border-primary/10"
+      >
+        <CommentsSection />
+      </motion.section>
     </div>
   )
 }

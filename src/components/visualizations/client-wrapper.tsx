@@ -46,11 +46,6 @@ export function ClientComponent({ component, props = {} }: ClientComponentProps)
           loading: () => <div>Loading...</div>,
           ssr: false,
         });
-      case 'AIUseCases':
-        return dynamic(() => import('./ai-use-cases').then((mod) => mod.AIUseCases), {
-          loading: () => <div>Loading...</div>,
-          ssr: false,
-        });
       case 'CountryLeadership':
         return dynamic(() => import('./country-leadership').then((mod) => mod.CountryLeadership), {
           loading: () => <div>Loading...</div>,
