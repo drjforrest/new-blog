@@ -22,7 +22,7 @@ export default function BlogPost() {
         visible: { opacity: 1 }
       }}
       transition={{ duration: 0.5 }}
-      className="max-w-4xl mx-auto px-4 py-12"
+      className="max-w-4xl mx-auto px-4"
     >
       {/* Back Link */}
       <motion.div 
@@ -31,7 +31,7 @@ export default function BlogPost() {
           visible: { x: 0, opacity: 1 }
         }}
         transition={{ delay: 0.2 }}
-        className="mb-12"
+        className="mb-8"
       >
         <Link 
           href="/blog"
@@ -49,7 +49,7 @@ export default function BlogPost() {
           visible: { y: 0, opacity: 1 }
         }}
         transition={{ delay: 0.3 }}
-        className="mb-12"
+        className="mb-10"
       >
         <div className="flex items-center gap-2 text-sm text-foreground/60 mb-4">
           <span>Jamie Forrest, PhD</span>
@@ -57,11 +57,11 @@ export default function BlogPost() {
           <time dateTime="2024-12-26">December 26, 2024</time>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-8 leading-tight">
+        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
           Agenda 2063: The Digital Transformation of a Continent
         </h1>
 
-        <div className="relative w-full h-[400px] rounded-2xl overflow-hidden mb-12">
+        <div className="relative w-full h-[400px] rounded-2xl overflow-hidden mb-8">
           <Image
             src="/africa-ai-banner.png"
             alt="Digital Transformation visualization showing AI and technology icons over African continent"
@@ -86,12 +86,12 @@ export default function BlogPost() {
           visible: { y: 0, opacity: 1 }
         }}
         transition={{ delay: 0.4 }}
-        className="prose prose-lg dark:prose-invert max-w-none space-y-8"
+        className="prose prose-lg dark:prose-invert max-w-none space-y-6"
       >
         {/* Content sections with proper spacing and typography */}
-        <section>
+        <section className="mt-10">
           <h2>Digital Transformation Leadership</h2>
-          <div className="my-8">
+          <div className="my-6">
             <DataVisualizationWrapper
               title="Digital Progress by Country"
               description="Comparative analysis of digital transformation progress across key African nations"
@@ -119,9 +119,9 @@ export default function BlogPost() {
           visible: { y: 0, opacity: 1 }
         }}
         transition={{ delay: 0.5 }}
-        className="mt-16 pt-8 border-t border-foreground/10"
+        className="mt-12 pt-6 border-t border-foreground/10"
       >
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-2 mb-6">
           {["Digital Transformation", "Africa", "Technology", "Innovation", "Development"].map((tag) => (
             <span
               key={tag}

@@ -52,9 +52,7 @@ export function CommentsSection() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 space-y-8 py-12">
-      <h2 className="text-2xl font-bold text-primary text-center mb-8">Community Reel</h2>
-      
+    <div className="max-w-4xl mx-auto px-4 space-y-8">
       {/* Comment Form */}
       <Card className="p-6 bg-white/90 backdrop-blur-sm shadow-lg border border-primary/10">
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -135,7 +133,7 @@ export function CommentsSection() {
         </form>
       </Card>
 
-      {/* Comments Reel */}
+      {/* Comments List */}
       <div className="space-y-4">
         <AnimatePresence mode="popLayout">
           {comments.map((comment) => (

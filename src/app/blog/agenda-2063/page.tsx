@@ -8,7 +8,6 @@ import { PolicyRecommendations } from '@/components/visualizations/policy-recomm
 import { StrategicEnablers } from '@/components/visualizations/strategic-enablers';
 import { TechnologyPillars } from '@/components/visualizations/technology-pillars';
 import { ImplementationProgress } from '@/components/visualizations/implementation-progress';
-import Image from 'next/image';
 
 export default function Page() {
   return (
@@ -33,20 +32,24 @@ export default function Page() {
         <h1>Agenda 2063: The Digital Transformation of a Continent</h1>
 
         <p className="lead">
-          Africa's digital future is being shaped by an ambitious vision: the Digital Transformation 
-          Strategy for Africa. This comprehensive framework aims to harness digital technologies and 
-          innovation to transform African societies and economies, promoting continental integration, 
-          inclusive growth, and poverty eradication.
+          Africa's digital future is being shaped by the ambitious and transformative Digital Transformation Strategy for Africa. 
+          This comprehensive framework harnesses digital technologies to drive socio-economic progress, foster regional integration, 
+          and promote inclusion. By focusing on sectors like education, healthcare, agriculture, and financial services, the strategy 
+          aims to create a more connected, productive, and equitable society.
         </p>
       </header>
 
       <section>
         <h2>A Unified Vision for Digital Africa</h2>
         <p>
-          The Digital Transformation Strategy for Africa represents a bold commitment to leveraging 
-          technology for societal transformation. It seeks to use digital technologies and innovation 
-          to transform African societies and economies, promote Africa's integration, generate inclusive 
-          economic growth, stimulate job creation, break digital divides, and eradicate poverty.
+          At its core, the strategy recognizes that digital technologies are powerful catalysts for systemic change. 
+          It emphasizes building robust digital infrastructure, including broadband connectivity, data centers, and digital platforms, 
+          to ensure all Africans can access the benefits of the digital economy.
+        </p>
+        <p>
+          This means bridging the digital divide by expanding internet access to rural and underserved communities, as well as cultivating 
+          digital literacy to empower individuals and businesses. The strategy prioritizes inclusivity to ensure no one is left behind 
+          in the digital revolution.
         </p>
         <div className="my-8">
           <StrategyFramework />
@@ -56,26 +59,29 @@ export default function Page() {
       <section>
         <h2>Strategic Frameworks in Action</h2>
         <p>
-          Agenda 2063 stands as a 50-year plan to harness Africa's comparative advantages and deliver 
-          on the vision of "The Africa We Want". This ambitious blueprint envisions Africa as an equal 
-          player in the global information society and integrated e-economy, where every government, 
-          business, and citizen has access to reliable and affordable ICT services.
+          Agenda 2063 serves as Africa's long-term roadmap for leveraging its strengths and shaping "The Africa We Want." 
+          It underscores Africa’s ambition to become an active, equal player in the global digital landscape, ensuring every 
+          citizen, business, and government benefits from reliable, affordable, and innovative ICT services.
         </p>
         <p>
-          Supporting this vision, the African Union's Science, Technology, and Innovation Strategy for 
-          Africa 2024 (STISA-2024) positions innovation at the center of Africa's socio-economic 
-          development. Developed in 2014, it provides a crucial framework for accelerating Africa's 
-          transition to an innovation-led, knowledge-based economy.
+          A key component of this vision is the Science, Technology, and Innovation Strategy for Africa (STISA-2024), which 
+          positions innovation as the driver of socio-economic transformation. Developed in 2014, STISA-2024 provides a foundation 
+          for Africa’s transition into a knowledge-based, innovation-led economy.
         </p>
       </section>
 
       <section>
         <h2>Technology Pillars</h2>
         <p>
-          The successful implementation of Africa's digital transformation strategy relies on several 
-          key technological pillars. These foundational elements work together to create a robust 
-          digital ecosystem that can support the continent's ambitious goals.
+          Africa's digital transformation relies on several foundational technological pillars:
         </p>
+        <ul>
+          <li><strong>Expansion of Broadband Connectivity:</strong> A critical enabler for economic growth and social inclusion.</li>
+          <li><strong>Investments in AI and Emerging Technologies:</strong> AI, machine learning, and automation can drive economic growth.</li>
+          <li><strong>Strengthening Cybersecurity Frameworks:</strong> Cyber resilience is crucial to protect digital infrastructure.</li>
+          <li><strong>Interoperable Digital Infrastructure:</strong> Ensuring seamless data-sharing and integration across sectors.</li>
+          <li><strong>Digital Inclusion Policies:</strong> Making digital access equitable for all citizens.</li>
+        </ul>
         <div className="my-8">
           <TechnologyPillars />
         </div>
@@ -84,9 +90,9 @@ export default function Page() {
       <section>
         <h2>Implementation Progress</h2>
         <p>
-          The journey toward digital transformation shows varying levels of progress across different 
-          regions of Africa. This diversity reflects local challenges, resources, and priorities, while 
-          also highlighting opportunities for cross-regional learning and collaboration.
+          While progress varies across African nations, regional collaboration and knowledge-sharing are enabling rapid advancements.
+          Some countries have developed smart cities, digital ID systems, and e-governance platforms, while others are strengthening 
+          regulatory frameworks to foster digital innovation.
         </p>
         <div className="my-8">
           <ImplementationProgress />
@@ -94,12 +100,16 @@ export default function Page() {
       </section>
 
       <section>
-        <h2>Policy Framework</h2>
+        <h2>Policy Frameworks and Enablers</h2>
         <p>
-          To bring African digital development up to speed, a comprehensive set of policy recommendations 
-          has been developed. These guidelines aim to create an enabling environment for digital 
-          transformation while ensuring inclusive and sustainable development.
+          A well-defined policy ecosystem is essential to guide and sustain Africa's digital growth:
         </p>
+        <ul>
+          <li><strong>Regulatory Harmonization:</strong> Enabling cross-border digital trade and economic integration.</li>
+          <li><strong>AI Governance and Ethics:</strong> Ensuring responsible and beneficial AI deployment.</li>
+          <li><strong>Investment Incentives:</strong> Attracting digital entrepreneurs and fostering innovation.</li>
+          <li><strong>Education and Workforce Development:</strong> Equipping Africa’s workforce with digital skills.</li>
+        </ul>
         <div className="my-8">
           <PolicyRecommendations />
         </div>
@@ -108,9 +118,7 @@ export default function Page() {
       <section>
         <h2>Strategic Enablers</h2>
         <p>
-          The success of Africa's digital transformation agenda depends on several critical enabling 
-          factors. These strategic enablers form the foundation upon which technological advancement 
-          and policy implementation can build.
+          Ensuring the success of Africa’s digital transformation requires key strategic enablers:
         </p>
         <div className="my-8">
           <StrategicEnablers />
@@ -120,31 +128,18 @@ export default function Page() {
       <section>
         <h2>Looking Forward</h2>
         <p>
-          As Africa moves forward with its digital transformation agenda, several key priorities emerge:
+          The path to Africa’s digital future requires:
         </p>
         <ul>
-          <li>
-            Harmonizing policies and regulations across regions to facilitate digital trade and 
-            integration
-          </li>
-          <li>
-            Developing comprehensive frameworks for emerging technologies like AI, IoT, and 5G
-          </li>
-          <li>
-            Building robust monitoring and evaluation systems to track progress and impact
-          </li>
-          <li>
-            Strengthening partnerships between government, private sector, and civil society
-          </li>
-          <li>
-            Ensuring digital transformation benefits reach all segments of society
-          </li>
+          <li>Unified digital policies and cross-border collaboration.</li>
+          <li>Investment in emerging technologies like AI, IoT, and 5G.</li>
+          <li>Strong monitoring frameworks for evaluating progress.</li>
+          <li>Partnerships between government, private sector, and civil society.</li>
+          <li>Ensuring digital transformation benefits reach all communities.</li>
         </ul>
         <p>
-          The success of these initiatives will require sustained commitment, innovative financing 
-          mechanisms, and deeper collaboration between stakeholders. As the continent progresses 
-          toward 2063, the foundations being laid today will shape Africa's digital future for 
-          generations to come.
+          With sustained commitment, strategic investments, and inclusive policies, Africa is poised to establish itself as 
+          a global leader in digital innovation.
         </p>
       </section>
 

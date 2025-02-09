@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '../theme/theme-toggle';
-import { LineChart, FileText, Grid2X2, Menu, X } from "lucide-react";
+import { LineChart, FileText, Layout, Menu, X } from "lucide-react";
 import { Button } from '../ui/button';
 
 export default function Navigation() {
@@ -22,8 +22,8 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { href: '/', icon: FileText, label: 'Blog Home' },
-    { href: '/bonus', icon: Grid2X2, label: 'Dashboards' },
+    { href: 'https://blog.drjforrest.com', icon: FileText, label: 'Blog', isExternal: true },
+    { href: 'https://apps.drjforrest.com', icon: Layout, label: 'Apps', isExternal: true },
   ];
 
   return (
@@ -56,20 +56,38 @@ export default function Navigation() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
-              {navLinks.map(({ href, icon: Icon, label }) => (
-                <Link 
-                  key={href}
-                  href={href} 
-                  className="group flex items-center gap-2 text-foreground/70 hover:text-primary transition-all duration-200"
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="p-2 rounded-md group-hover:bg-primary/5"
+              {navLinks.map(({ href, icon: Icon, label, isExternal }) => (
+                isExternal ? (
+                  <a
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-2 text-foreground/70 hover:text-primary transition-all duration-200"
                   >
-                    <Icon className="h-4 w-4" />
-                  </motion.div>
-                  <span className="font-medium">{label}</span>
-                </Link>
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      className="p-2 rounded-md group-hover:bg-primary/5"
+                    >
+                      <Icon className="h-4 w-4" />
+                    </motion.div>
+                    <span className="font-medium">{label}</span>
+                  </a>
+                ) : (
+                  <Link 
+                    key={href}
+                    href={href} 
+                    className="group flex items-center gap-2 text-foreground/70 hover:text-primary transition-all duration-200"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      className="p-2 rounded-md group-hover:bg-primary/5"
+                    >
+                      <Icon className="h-4 w-4" />
+                    </motion.div>
+                    <span className="font-medium">{label}</span>
+                  </Link>
+                )
               ))}
             </div>
           </div>
@@ -103,16 +121,30 @@ export default function Navigation() {
               className="md:hidden border-t border-foreground/10"
             >
               <div className="py-4 space-y-2">
-                {navLinks.map(({ href, icon: Icon, label }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center gap-2 px-4 py-2 text-foreground/70 hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
-                  >
-                    <Icon className="h-4 w-4" />
-                    <span className="font-medium">{label}</span>
-                  </Link>
+                {navLinks.map(({ href, icon: Icon, label, isExternal }) => (
+                  isExternal ? (
+                    <a
+                      key={href}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center gap-2 px-4 py-2 text-foreground/70 hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
+                    >
+                      <Icon className="h-4 w-4" />
+                      <span className="font-medium">{label}</span>
+                    </a>
+                  ) : (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center gap-2 px-4 py-2 text-foreground/70 hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
+                    >
+                      <Icon className="h-4 w-4" />
+                      <span className="font-medium">{label}</span>
+                    </Link>
+                  )
                 ))}
               </div>
             </motion.div>
