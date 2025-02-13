@@ -1,16 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer
-} from 'recharts';
+import { BaseBarChart } from './base/BaseBarChart';
 
 const data = [
   {
@@ -45,25 +36,17 @@ export function AIGrowthChart() {
     <div className="w-full">
       <h3 className="text-lg font-semibold mb-4 text-foreground">AI Impact by Sector (% Growth)</h3>
       <div className="w-full h-[400px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={data}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="sector" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="current" name="Current Impact" fill="#2563eb" />
-            <Bar dataKey="projected" name="2030 Projection" fill="#16a34a" />
-          </BarChart>
-        </ResponsiveContainer>
+        <BaseBarChart
+          data={data}
+          xAxisKey="sector"
+          dataKeys={[
+            { key: 'current', name: 'Current Impact' },
+            { key: 'projected', name: '2030 Projection' }
+          ]}
+          xAxisLabel="Sector"
+          yAxisLabel="Growth (%)"
+          tooltipFormatter={(value) => `${value}%`}
+        />
       </div>
     </div>
   );

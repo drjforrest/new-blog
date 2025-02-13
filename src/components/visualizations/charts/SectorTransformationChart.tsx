@@ -1,15 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
+import { BaseBarChart } from './base/BaseBarChart';
 
 interface SectorTransformationChartProps {
   data: Array<{
@@ -25,28 +17,16 @@ export function SectorTransformationChart({
   tooltipFormatter = (value) => `${value}%`
 }: SectorTransformationChartProps) {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis 
-          dataKey="sector"
-          label={{ value: "Sector", position: "bottom" }}
-        />
-        <YAxis 
-          label={{ value: "Percentage", angle: -90, position: "left" }}
-        />
-        <Tooltip formatter={tooltipFormatter} />
-        <Bar 
-          dataKey="current" 
-          fill="#3B82F6" 
-          name="Current Adoption" 
-        />
-        <Bar 
-          dataKey="projected" 
-          fill="#10B981" 
-          name="2030 Projection" 
-        />
-      </BarChart>
-    </ResponsiveContainer>
+    <BaseBarChart
+      data={data}
+      xAxisKey="sector"
+      dataKeys={[
+        { key: 'current', name: 'Current Adoption' },
+        { key: 'projected', name: '2030 Projection' }
+      ]}
+      xAxisLabel="Sector"
+      yAxisLabel="Percentage"
+      tooltipFormatter={tooltipFormatter}
+    />
   );
 }

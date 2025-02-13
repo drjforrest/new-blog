@@ -1,16 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
+import { BaseMultiLineChart } from './base/BaseMultiLineChart';
 
 const data = [
   {
@@ -50,46 +41,30 @@ const data = [
   },
 ];
 
+const customColors = {
+  digital_adoption: '#3B82F6',
+  policy_implementation: '#10B981',
+  infrastructure: '#F59E0B',
+  skills: '#EF4444',
+};
+
 export function DigitalVisionExplorerChart() {
   return (
     <div className="h-[400px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="year" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="digital_adoption"
-            name="Digital Adoption"
-            stroke="#3B82F6"
-            strokeWidth={2}
-          />
-          <Line
-            type="monotone"
-            dataKey="policy_implementation"
-            name="Policy Implementation"
-            stroke="#10B981"
-            strokeWidth={2}
-          />
-          <Line
-            type="monotone"
-            dataKey="infrastructure"
-            name="Infrastructure"
-            stroke="#F59E0B"
-            strokeWidth={2}
-          />
-          <Line
-            type="monotone"
-            dataKey="skills"
-            name="Digital Skills"
-            stroke="#EF4444"
-            strokeWidth={2}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <BaseMultiLineChart
+        data={data}
+        xAxisKey="year"
+        dataKeys={[
+          { key: 'digital_adoption', name: 'Digital Adoption', color: customColors.digital_adoption },
+          { key: 'policy_implementation', name: 'Policy Implementation', color: customColors.policy_implementation },
+          { key: 'infrastructure', name: 'Infrastructure', color: customColors.infrastructure },
+          { key: 'skills', name: 'Digital Skills', color: customColors.skills }
+        ]}
+        xAxisLabel="Year"
+        yAxisLabel="Progress Score"
+        tooltipFormatter={(value) => `${value}%`}
+        strokeWidth={2}
+      />
     </div>
   );
 }

@@ -1,19 +1,11 @@
 'use client';
 
 import React from 'react';
-import {
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
+import { BaseInteractiveRadarChart } from './base/BaseInteractiveRadarChart';
 
 const data = [
   {
-    metric: 'Digital Infrastructure',
+    name: 'Digital Infrastructure',
     Kenya: 75,
     Rwanda: 82,
     Nigeria: 68,
@@ -21,7 +13,7 @@ const data = [
     Ghana: 70,
   },
   {
-    metric: 'Policy Framework',
+    name: 'Policy Framework',
     Kenya: 70,
     Rwanda: 85,
     Nigeria: 65,
@@ -29,7 +21,7 @@ const data = [
     Ghana: 68,
   },
   {
-    metric: 'Digital Skills',
+    name: 'Digital Skills',
     Kenya: 72,
     Rwanda: 75,
     Nigeria: 70,
@@ -37,7 +29,7 @@ const data = [
     Ghana: 78,
   },
   {
-    metric: 'Innovation',
+    name: 'Innovation',
     Kenya: 80,
     Rwanda: 78,
     Nigeria: 75,
@@ -45,7 +37,7 @@ const data = [
     Ghana: 72,
   },
   {
-    metric: 'Digital Services',
+    name: 'Digital Services',
     Kenya: 85,
     Rwanda: 80,
     Nigeria: 72,
@@ -54,52 +46,34 @@ const data = [
   },
 ];
 
+const metrics = [
+  'Digital Infrastructure',
+  'Policy Framework',
+  'Digital Skills',
+  'Innovation',
+  'Digital Services'
+];
+
+const countries = ['Kenya', 'Rwanda', 'Nigeria', 'Ethiopia', 'Ghana'];
+
+const customColors = {
+  Kenya: '#3B82F6',
+  Rwanda: '#10B981',
+  Nigeria: '#F59E0B',
+  Ethiopia: '#EF4444',
+  Ghana: '#8B5CF6',
+};
+
 export function CountryLeadershipChart() {
   return (
     <div className="h-[500px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={data}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="metric" />
-          <PolarRadiusAxis angle={30} domain={[0, 100]} />
-          <Radar
-            name="Kenya"
-            dataKey="Kenya"
-            stroke="#3B82F6"
-            fill="#3B82F6"
-            fillOpacity={0.6}
-          />
-          <Radar
-            name="Rwanda"
-            dataKey="Rwanda"
-            stroke="#10B981"
-            fill="#10B981"
-            fillOpacity={0.6}
-          />
-          <Radar
-            name="Nigeria"
-            dataKey="Nigeria"
-            stroke="#F59E0B"
-            fill="#F59E0B"
-            fillOpacity={0.6}
-          />
-          <Radar
-            name="Ethiopia"
-            dataKey="Ethiopia"
-            stroke="#EF4444"
-            fill="#EF4444"
-            fillOpacity={0.6}
-          />
-          <Radar
-            name="Ghana"
-            dataKey="Ghana"
-            stroke="#8B5CF6"
-            fill="#8B5CF6"
-            fillOpacity={0.6}
-          />
-          <Legend />
-        </RadarChart>
-      </ResponsiveContainer>
+      <BaseInteractiveRadarChart
+        data={data}
+        metrics={metrics}
+        countries={countries}
+        customColors={customColors}
+        tooltipFormatter={(value) => `${value}%`}
+      />
     </div>
   );
 }

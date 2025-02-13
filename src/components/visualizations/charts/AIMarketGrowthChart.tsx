@@ -1,15 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
+import { BaseLineChart } from './base/BaseLineChart';
 
 interface AIMarketGrowthChartProps {
   data: Array<{
@@ -20,14 +12,14 @@ interface AIMarketGrowthChartProps {
 
 export function AIMarketGrowthChart({ data }: AIMarketGrowthChartProps) {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="year" />
-        <YAxis />
-        <Tooltip />
-        <Line type="monotone" dataKey="value" stroke="#3B82F6" />
-      </LineChart>
-    </ResponsiveContainer>
+    <BaseLineChart
+      data={data}
+      dataKey="value"
+      xAxisKey="year"
+      yAxisLabel="Market Size (USD Trillion)"
+      xAxisLabel="Year"
+      name="Market Growth"
+      tooltipFormatter={(value) => `$${value}T`}
+    />
   );
 }

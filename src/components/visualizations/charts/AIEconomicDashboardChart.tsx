@@ -1,20 +1,9 @@
 'use client';
 
 import React from 'react';
-import {
-  LineChart,
-  Line,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
-import { Card } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { BaseTabbedDashboard } from './base/BaseTabbedDashboard';
+import { BaseLineChart } from './base/BaseLineChart';
+import { BaseBarChart } from './base/BaseBarChart';
 
 const marketData = [
   { year: 2020, value: 5.2 },
@@ -45,58 +34,63 @@ interface AIEconomicDashboardChartProps {
 }
 
 export function AIEconomicDashboardChart({ activeTab = 'market' }: AIEconomicDashboardChartProps) {
-  const [currentTab, setCurrentTab] = React.useState(activeTab);
+  const tabs = [
+    {
+      id: 'market',
+      label: 'Market Growth',
+      content: (
+        <BaseLineChart
+          data={marketData}
+          dataKey="value"
+          xAxisKey="year"
+          name="Market Value ($B)"
+          xAxisLabel="Year"
+          yAxisLabel="Market Value (Billion USD)"
+          tooltipFormatter={(value) => `$${value}B`}
+        />
+      ),
+    },
+    {
+      id: 'sectors',
+      label: 'Sector Impact',
+      content: (
+        <BaseBarChart
+          data={sectorData}
+          xAxisKey="sector"
+          dataKeys={[
+            { key: 'current', name: 'Current Impact' },
+            { key: 'projected', name: '2030 Projection' }
+          ]}
+          xAxisLabel="Sector"
+          yAxisLabel="Impact Score"
+          tooltipFormatter={(value) => `${value}`}
+        />
+      ),
+    },
+    {
+      id: 'investment',
+      label: 'Investment Gap',
+      content: (
+        <BaseBarChart
+          data={investmentData}
+          xAxisKey="category"
+          dataKeys={[
+            { key: 'required', name: 'Required Investment' },
+            { key: 'current', name: 'Current Investment' }
+          ]}
+          xAxisLabel="Category"
+          yAxisLabel="Investment (Billion USD)"
+          tooltipFormatter={(value) => `$${value}B`}
+        />
+      ),
+    },
+  ];
 
   return (
-    <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
-      <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="market">Market Growth</TabsTrigger>
-        <TabsTrigger value="sectors">Sector Impact</TabsTrigger>
-        <TabsTrigger value="investment">Investment Gap</TabsTrigger>
-      </TabsList>
-
-      <div className="mt-6">
-        <TabsContent value="market" className="h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={marketData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="year" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="value" name="Market Value ($B)" stroke="#3B82F6" />
-            </LineChart>
-          </ResponsiveContainer>
-        </TabsContent>
-
-        <TabsContent value="sectors" className="h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={sectorData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="sector" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="current" name="Current Impact" fill="#3B82F6" />
-              <Bar dataKey="projected" name="2030 Projection" fill="#10B981" />
-            </BarChart>
-          </ResponsiveContainer>
-        </TabsContent>
-
-        <TabsContent value="investment" className="h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={investmentData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="category" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="required" name="Required Investment" fill="#3B82F6" />
-              <Bar dataKey="current" name="Current Investment" fill="#10B981" />
-            </BarChart>
-          </ResponsiveContainer>
-        </TabsContent>
-      </div>
-    </Tabs>
+    <BaseTabbedDashboard
+      tabs={tabs}
+      defaultTab={activeTab}
+      height="h-[300px]"
+    />
   );
 }

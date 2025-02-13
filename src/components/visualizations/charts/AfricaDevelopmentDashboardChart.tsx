@@ -1,18 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  LineChart,
-  Line,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer
-} from 'recharts';
+import { BaseMultiLineChart } from './base/BaseMultiLineChart';
 
 interface ChartProps {
   type: 'digital-access' | 'skills-development' | 'infrastructure' | 'innovation';
@@ -51,11 +40,18 @@ const innovationData = [
 ];
 
 const chartColors = {
-  kenya: '#2563eb',
-  nigeria: '#16a34a',
-  rwanda: '#dc2626',
-  southAfrica: '#9333ea',
+  kenya: '#2563eb',      // Deep blue
+  nigeria: '#16a34a',    // Green
+  rwanda: '#dc2626',     // Red
+  southAfrica: '#9333ea', // Purple
 };
+
+const dataKeys = [
+  { key: 'kenya', name: 'Kenya', color: chartColors.kenya },
+  { key: 'nigeria', name: 'Nigeria', color: chartColors.nigeria },
+  { key: 'rwanda', name: 'Rwanda', color: chartColors.rwanda },
+  { key: 'southAfrica', name: 'South Africa', color: chartColors.southAfrica },
+];
 
 export function AfricaDevelopmentDashboardChart({ type }: ChartProps) {
   const getData = () => {
@@ -79,43 +75,15 @@ export function AfricaDevelopmentDashboardChart({ type }: ChartProps) {
     <div className="w-full">
       <h3 className="text-lg font-semibold mb-4 text-foreground">{title}</h3>
       <div className="w-full h-[400px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="kenya"
-              stroke={chartColors.kenya}
-              name="Kenya"
-              strokeWidth={2}
-            />
-            <Line
-              type="monotone"
-              dataKey="nigeria"
-              stroke={chartColors.nigeria}
-              name="Nigeria"
-              strokeWidth={2}
-            />
-            <Line
-              type="monotone"
-              dataKey="rwanda"
-              stroke={chartColors.rwanda}
-              name="Rwanda"
-              strokeWidth={2}
-            />
-            <Line
-              type="monotone"
-              dataKey="southAfrica"
-              stroke={chartColors.southAfrica}
-              name="South Africa"
-              strokeWidth={2}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <BaseMultiLineChart
+          data={data}
+          xAxisKey="year"
+          dataKeys={dataKeys}
+          xAxisLabel="Year"
+          yAxisLabel={title}
+          tooltipFormatter={(value) => `${value}%`}
+          strokeWidth={2}
+        />
       </div>
     </div>
   );

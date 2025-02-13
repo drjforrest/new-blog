@@ -1,44 +1,36 @@
 'use client';
 
 import React from 'react';
-import {
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  ResponsiveContainer,
-  Tooltip
-} from 'recharts';
+import { BaseRadarChart } from './base/BaseRadarChart';
 
 const data = [
   {
-    category: 'Economic Growth',
+    metric: 'Economic Growth',
     value: 85,
     fullMark: 100,
   },
   {
-    category: 'Education',
+    metric: 'Education',
     value: 78,
     fullMark: 100,
   },
   {
-    category: 'Healthcare',
+    metric: 'Healthcare',
     value: 82,
     fullMark: 100,
   },
   {
-    category: 'Gender Equality',
+    metric: 'Gender Equality',
     value: 74,
     fullMark: 100,
   },
   {
-    category: 'Innovation',
+    metric: 'Innovation',
     value: 90,
     fullMark: 100,
   },
   {
-    category: 'Infrastructure',
+    metric: 'Infrastructure',
     value: 76,
     fullMark: 100,
   },
@@ -49,21 +41,15 @@ export function SDGImpactChart() {
     <div className="w-full">
       <h3 className="text-lg font-semibold mb-4 text-foreground">AI Impact on SDG Categories</h3>
       <div className="w-full h-[400px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="category" />
-            <PolarRadiusAxis angle={30} domain={[0, 100]} />
-            <Radar
-              name="Impact Score"
-              dataKey="value"
-              stroke="#2563eb"
-              fill="#2563eb"
-              fillOpacity={0.6}
-            />
-            <Tooltip />
-          </RadarChart>
-        </ResponsiveContainer>
+        <BaseRadarChart
+          data={data}
+          angleKey="metric"
+          dataKeys={[
+            { key: 'value', name: 'Impact Score' }
+          ]}
+          domain={[0, 100]}
+          tooltipFormatter={(value) => `${value}%`}
+        />
       </div>
     </div>
   );

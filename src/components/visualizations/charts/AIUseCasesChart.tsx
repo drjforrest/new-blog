@@ -1,16 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
+import { BaseBarChart } from './base/BaseBarChart';
 
 const data = [
   {
@@ -48,30 +39,18 @@ const data = [
 export function AIUseCasesChart() {
   return (
     <div className="h-[400px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="sector" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar
-            dataKey="current_adoption"
-            name="Current Adoption (%)"
-            fill="#3B82F6"
-          />
-          <Bar
-            dataKey="impact_score"
-            name="Impact Score"
-            fill="#10B981"
-          />
-          <Bar
-            dataKey="roi"
-            name="ROI Score"
-            fill="#F59E0B"
-          />
-        </BarChart>
-      </ResponsiveContainer>
+      <BaseBarChart
+        data={data}
+        xAxisKey="sector"
+        dataKeys={[
+          { key: 'current_adoption', name: 'Current Adoption (%)' },
+          { key: 'impact_score', name: 'Impact Score' },
+          { key: 'roi', name: 'ROI Score' }
+        ]}
+        xAxisLabel="Sector"
+        yAxisLabel="Score"
+        tooltipFormatter={(value) => `${value}`}
+      />
     </div>
   );
 }

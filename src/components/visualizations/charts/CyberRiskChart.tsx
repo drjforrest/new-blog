@@ -1,65 +1,45 @@
 'use client';
 
 import React from 'react';
-import {
-  RadialBarChart,
-  RadialBar,
-  Legend,
-  ResponsiveContainer,
-  Tooltip
-} from 'recharts';
+import { BaseRadialBarChart } from './base/BaseRadialBarChart';
 
 const data = [
   {
     name: 'Infrastructure Vulnerability',
     value: 85,
-    fill: '#2563eb'
   },
   {
     name: 'Data Privacy Risks',
     value: 75,
-    fill: '#16a34a'
   },
   {
     name: 'Economic Impact',
     value: 65,
-    fill: '#dc2626'
   },
   {
     name: 'System Breaches',
     value: 55,
-    fill: '#9333ea'
   }
 ];
+
+const customColors = {
+  'Infrastructure Vulnerability': '#2563eb',
+  'Data Privacy Risks': '#16a34a',
+  'Economic Impact': '#dc2626',
+  'System Breaches': '#9333ea',
+};
 
 export function CyberRiskChart() {
   return (
     <div className="w-full">
       <h3 className="text-lg font-semibold mb-4 text-foreground">Cybersecurity Risk Levels</h3>
       <div className="w-full h-[400px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <RadialBarChart 
-            cx="50%" 
-            cy="50%" 
-            innerRadius="20%" 
-            outerRadius="80%" 
-            barSize={20} 
-            data={data}
-          >
-            <RadialBar
-              label={{ position: 'insideStart', fill: '#fff' }}
-              background
-              dataKey="value"
-            />
-            <Tooltip />
-            <Legend 
-              iconSize={10}
-              layout="vertical"
-              verticalAlign="middle"
-              align="right"
-            />
-          </RadialBarChart>
-        </ResponsiveContainer>
+        <BaseRadialBarChart
+          data={data}
+          customColors={customColors}
+          tooltipFormatter={(value) => `${value}%`}
+          barSize={20}
+        />
       </div>
     </div>
   );
