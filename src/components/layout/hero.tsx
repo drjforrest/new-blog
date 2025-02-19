@@ -25,8 +25,8 @@ export function Hero() {
             <div className="p-4 bg-primary/10 rounded-2xl">
               <LineChart className="w-10 h-10 text-primary" />
             </div>
-            <div className="p-4 bg-accent/10 rounded-2xl">
-              <PenTool className="w-10 h-10 text-accent" />
+            <div className="p-4 bg-[#E63946]/10 rounded-2xl">
+              <PenTool className="w-10 h-10 text-[#E63946]" />
             </div>
             <div className="p-4 bg-success/10 rounded-2xl">
               <Globe className="w-10 h-10 text-success" />

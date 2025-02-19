@@ -1,4 +1,5 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
+import { themeConfig } from './src/theme/config';
 
 const config: Config = {
   content: [
@@ -9,14 +10,7 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
-      colors: {
-        background: 'rgb(var(--background) / <alpha-value>)',
-        foreground: 'rgb(var(--foreground) / <alpha-value>)',
-        primary: 'rgb(var(--primary) / <alpha-value>)',
-        accent: 'rgb(var(--accent) / <alpha-value>)',
-        success: 'rgb(var(--success) / <alpha-value>)',
-        muted: 'rgb(var(--muted) / <alpha-value>)',
-      },
+      ...themeConfig.theme.extend,
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
         'slide-up': 'slideUp 0.5s ease-out',
@@ -31,52 +25,9 @@ const config: Config = {
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: 'rgb(var(--foreground))',
-            a: {
-              color: 'rgb(var(--primary))',
-              '&:hover': {
-                color: 'rgb(var(--primary) / 0.8)',
-              },
-            },
-            h1: {
-              color: 'rgb(var(--foreground))',
-            },
-            h2: {
-              color: 'rgb(var(--foreground))',
-            },
-            h3: {
-              color: 'rgb(var(--foreground))',
-            },
-            h4: {
-              color: 'rgb(var(--foreground))',
-            },
-            blockquote: {
-              color: 'rgb(var(--foreground) / 0.8)',
-              borderLeftColor: 'rgb(var(--primary) / 0.2)',
-            },
-            code: {
-              color: 'rgb(var(--foreground))',
-            },
-            'code::before': {
-              content: '""',
-            },
-            'code::after': {
-              content: '""',
-            },
-            pre: {
-              backgroundColor: 'rgb(var(--muted) / 0.1)',
-            },
-          },
-        },
-      },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-}
+  plugins: [require('@tailwindcss/typography')],
+};
 
-export default config
+export default config;

@@ -4,7 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Card, MotionCard } from '@/components/ui/card';
+import { Card } from '@/components/ui/card'; // ✅ Removed MotionCard
 import { Clock, BookOpen, Calendar } from 'lucide-react';
 
 interface BlogCardProps {
@@ -30,7 +30,8 @@ export function BlogCard({
 }: BlogCardProps) {
   return (
     <Link href={`/blog/${slug}`} className="block group">
-      <MotionCard 
+      {/* ✅ Use motion(Card) instead of importing MotionCard */}
+      <motion.div 
         className="h-full overflow-hidden bg-white/90 backdrop-blur-sm shadow-lg border border-primary/10 
                    hover:shadow-xl transition-all duration-300"
         initial={{ opacity: 0, y: 20 }}
@@ -38,7 +39,7 @@ export function BlogCard({
         transition={{ duration: 0.3 }}
         whileHover={{ y: -4 }}
       >
-        <div className="p-8">
+        <Card className="p-8">
           {category && (
             <div className="flex items-center gap-2 mb-4">
               <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
@@ -87,7 +88,7 @@ export function BlogCard({
               </div>
             )}
           </div>
-        </div>
+        </Card>
 
         {imageSrc && (
           <div className="aspect-[2/1] relative mt-4">
@@ -99,7 +100,7 @@ export function BlogCard({
             />
           </div>
         )}
-      </MotionCard>
+      </motion.div>
     </Link>
   );
 }
