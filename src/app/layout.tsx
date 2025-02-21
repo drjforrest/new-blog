@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen antialiased`}>
         <Providers>
-          <div className="min-h-screen flex flex-col">
+          <div className="relative min-h-screen flex flex-col">
             <Navigation />
-            <main className="flex-1">
+            <main className="flex-1 pt-16">
               {children}
             </main>
             <Footer />

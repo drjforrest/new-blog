@@ -8,7 +8,7 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export function ThemeProvider({ children }: ThemeProviderProps) {
+export default function ThemeProvider({ children }: ThemeProviderProps) {
   // Set CSS variables based on theme
   useEffect(() => {
     // Set light mode variables

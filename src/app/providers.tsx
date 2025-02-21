@@ -1,9 +1,9 @@
 'use client';
 
 import { ThemeProvider } from 'next-themes';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 
-export function Providers({ children }: { children: ReactNode }) {
+function ThemeProviderWrapper({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider
       attribute="class"
@@ -13,5 +13,13 @@ export function Providers({ children }: { children: ReactNode }) {
     >
       {children}
     </ThemeProvider>
+  );
+}
+
+export function Providers({ children }: { children: ReactNode }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+    </Suspense>
   );
 }

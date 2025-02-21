@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from 'framer-motion';
-import { ThemeToggle } from '../theme/theme-toggle';
-import { LineChart, FileText, Layout, Menu, X } from "lucide-react";
-import { Button } from '../ui/button';
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/theme/theme-toggle";
+import { AnimatePresence } from 'framer-motion';
+import { LineChart, FileText, LayoutGrid, Menu, X } from "lucide-react";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,135 +23,113 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { href: 'https://blog.drjforrest.com', icon: FileText, label: 'Blog', isExternal: true },
-    { href: 'https://apps.drjforrest.com', icon: Layout, label: 'Apps', isExternal: true },
+    { href: "https://drjforrest.com", icon: FileText, label: "Main", external: true },
+    { href: "https://drjforrest.com", icon: LayoutGrid, label: "Apps", external: true },
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-sm border-b border-foreground/10' : ''
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/80 backdrop-blur-lg shadow-sm border-b border-border/50"
+          : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <nav className="h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <a 
-              href="https://drjforrest.com" 
-              className="flex items-center gap-2.5 group"
-              target="_blank"
-              rel="noopener noreferrer"
+      <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
+        {/* Left Side: Logo + Name */}
+        <Link href="/" className="group flex items-center gap-3 text-foreground hover:text-primary">
+          <div className="p-1.5 rounded-lg bg-primary/10">
+            <LineChart className="w-5 h-5 text-primary" />
+          </div>
+          <motion.span
+            className="font-semibold text-lg tracking-tight"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            Dr. Jamie I. Forrest
+          </motion.span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              className="flex items-center gap-2 text-foreground hover:text-primary transition group"
             >
               <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/15 transition-all duration-200"
+                className="p-1.5 rounded-lg bg-primary/0 group-hover:bg-primary/10 transition-colors"
+                whileHover={{ scale: 1.05 }} 
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <LineChart className="w-5 h-5 text-primary" />
+                <link.icon className="w-4 h-4 text-foreground group-hover:text-primary transition-colors" />
               </motion.div>
-              <span className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                Dr. Jamie I. Forrest
-              </span>
-            </a>
+              <span className="hidden sm:inline font-medium">{link.label}</span>
+            </Link>
+          ))}
+          <ThemeToggle />
+        </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
-              {navLinks.map(({ href, icon: Icon, label, isExternal }) => (
-                isExternal ? (
-                  <a
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-2 text-foreground/70 hover:text-primary transition-all duration-200"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      className="p-2 rounded-md group-hover:bg-primary/5"
-                    >
-                      <Icon className="h-4 w-4" />
-                    </motion.div>
-                    <span className="font-medium">{label}</span>
-                  </a>
-                ) : (
-                  <Link 
-                    key={href}
-                    href={href} 
-                    className="group flex items-center gap-2 text-foreground/70 hover:text-primary transition-all duration-200"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      className="p-2 rounded-md group-hover:bg-primary/5"
-                    >
-                      <Icon className="h-4 w-4" />
-                    </motion.div>
-                    <span className="font-medium">{label}</span>
-                  </Link>
-                )
-              ))}
-            </div>
-          </div>
+        {/* Mobile Menu Button */}
+        <div className="flex items-center gap-4 md:hidden">
+          <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+            className="hover:bg-accent/10"
+          >
+            <motion.div animate={{ rotate: isMobileMenuOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </motion.div>
+          </Button>
+        </div>
+      </nav>
 
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
-        </nav>
-
-        {/* Mobile Menu */}
+      {/* Mobile Menu */}
+      <div className="md:hidden">
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
+              key="mobile-menu"
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t border-foreground/10"
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              className="bg-background border-t border-border/50"
             >
-              <div className="py-4 space-y-2">
-                {navLinks.map(({ href, icon: Icon, label, isExternal }) => (
-                  isExternal ? (
-                    <a
-                      key={href}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-2 px-4 py-2 text-foreground/70 hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
-                    >
-                      <Icon className="h-4 w-4" />
-                      <span className="font-medium">{label}</span>
-                    </a>
-                  ) : (
+              <div className="container mx-auto px-4 py-4 space-y-4">
+                {navLinks.map((link) => (
+                  <motion.div
+                    key={link.label}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -20, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <Link
-                      key={href}
-                      href={href}
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      className="flex items-center gap-3 p-2 rounded-md hover:bg-accent/10 transition-colors duration-200"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-2 px-4 py-2 text-foreground/70 hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
                     >
-                      <Icon className="h-4 w-4" />
-                      <span className="font-medium">{label}</span>
+                      <div className="p-1.5 rounded-lg bg-primary/10">
+                        <link.icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="font-medium">{link.label}</span>
                     </Link>
-                  )
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
-    </motion.header>
+    </header>
   );
 }

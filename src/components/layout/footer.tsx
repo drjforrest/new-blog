@@ -12,8 +12,8 @@ interface FooterProps extends React.HTMLAttributes<HTMLElement> {
 
 const footerLinks = {
   navigation: [
-    { label: 'Blog', href: '/blog' },
-    { label: 'Apps', href: '/apps' },
+    { label: 'Main', href: 'https://drjforrest.com' },
+    { label: 'Apps', href: 'https://apps.drjforrest.com' },
   ],
   resources: [
     { label: 'Interactive Dashboards', href: '/bonus' },
@@ -63,7 +63,6 @@ export function Footer({
               </span>
             </motion.div>
             <p className="text-foreground/70">
-              Exploring African digital development through data visualization and analysis.
             </p>
           </div>
           

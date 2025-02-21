@@ -1,5 +1,5 @@
-import { ThemeProvider } from '../theme/theme-provider'
-import Navigation from './Navigation'
+import ThemeProvider from '../theme/theme-provider'
+import { Navigation } from './Navigation'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
