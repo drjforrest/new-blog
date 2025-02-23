@@ -2,13 +2,19 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/theme/theme-toggle";
 import { AnimatePresence } from 'framer-motion';
-import { LineChart, FileText, Presentation, BookOpen, Menu, X } from "lucide-react";
 
-export default function Navigation() {
+// Dynamically import icons to optimize loading
+const FileText = dynamic(() => import("lucide-react").then((mod) => mod.FileText));
+const LayoutGrid = dynamic(() => import("lucide-react").then((mod) => mod.LayoutGrid));
+const Menu = dynamic(() => import("lucide-react").then((mod) => mod.Menu));
+const X = dynamic(() => import("lucide-react").then((mod) => mod.X));
+const LineChart = dynamic(() => import("lucide-react").then((mod) => mod.LineChart));
+
+export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,24 +29,8 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { 
-      href: "https://more-blog.drjforrest.com", 
-      icon: FileText, 
-      label: "Standard Blog", 
-      external: true 
-    },
-    { 
-      href: "/african-digital-development", 
-      icon: LineChart, 
-      label: "Featured Series", 
-      external: false 
-    },
-    { 
-      href: "https://more-blog.drjforrest.com/presentations", 
-      icon: Presentation, 
-      label: "Presentations", 
-      external: true 
-    },
+    { href: "https://apps.drjforrest.com", icon: FileText, label: "Apps", external: true },
+    { href: "https://drjforrest.com", icon: LayoutGrid, label: "Main", external: true },
   ];
 
   return (
@@ -54,16 +44,10 @@ export default function Navigation() {
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Left Side: Logo + Name */}
         <Link href="/" className="group flex items-center gap-3 text-foreground hover:text-primary">
-          <div className="p-1.5 rounded-lg bg-primary/10">
-            <LineChart className="w-5 h-5 text-primary" />
-          </div>
-          <motion.span
-            className="font-semibold text-lg tracking-tight"
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          >
+          <LineChart className="w-8 h-8" />
+          <span className="font-semibold text-lg sm:text-xl">
             Dr. Jamie I. Forrest
-          </motion.span>
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -74,16 +58,12 @@ export default function Navigation() {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className="flex items-center gap-2 text-foreground hover:text-primary transition group"
+              className="flex items-center gap-2 text-foreground hover:text-primary transition"
             >
-              <motion.div 
-                className="p-1.5 rounded-lg bg-primary/0 group-hover:bg-primary/10 transition-colors"
-                whileHover={{ scale: 1.05 }} 
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <link.icon className="w-4 h-4 text-foreground group-hover:text-primary transition-colors" />
-              </motion.div>
-              <span className="hidden sm:inline font-medium">{link.label}</span>
+              <div>
+                <link.icon className="w-5 h-5" />
+              </div>
+              <span className="hidden sm:inline">{link.label}</span>
             </Link>
           ))}
           <ThemeToggle />
@@ -99,53 +79,34 @@ export default function Navigation() {
             aria-label="Toggle menu"
             className="hover:bg-accent/10"
           >
-            <motion.div animate={{ rotate: isMobileMenuOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+            <div>
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </motion.div>
+            </div>
           </Button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
-      <div className="md:hidden">
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              key="mobile-menu"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="bg-background border-t border-border/50"
-            >
-              <div className="container mx-auto px-4 py-4 space-y-4">
-                {navLinks.map((link) => (
-                  <motion.div
-                    key={link.label}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: -20, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Link
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
-                      className="flex items-center gap-3 p-2 rounded-md hover:bg-accent/10 transition-colors duration-200"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      <div className="p-1.5 rounded-lg bg-primary/10">
-                        <link.icon className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="font-medium">{link.label}</span>
-                    </Link>
-                  </motion.div>
-                ))}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-background border-t border-border/50">
+          <div className="container mx-auto px-4 py-4 space-y-4">
+            {navLinks.map((link) => (
+              <div key={link.label}>
+                <Link
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  className="flex items-center gap-2 p-2 rounded-md hover:bg-accent/10 transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <link.icon className="h-5 w-5" />
+                  {link.label}
+                </Link>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

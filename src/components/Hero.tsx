@@ -84,7 +84,7 @@ export function Hero() {
               transition={{ duration: 0.5 }}
               className="text-[#26385C] text-6xl font-bold mb-6"
             >
-              Tech Tabs of Global of Health
+              Tech Tabs on Global Health
             </motion.h1>
             
             <motion.h2

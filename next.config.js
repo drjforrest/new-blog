@@ -35,10 +35,9 @@ const nextConfig = {
       };
     }
 
-    // Optimize chunks with pnpm-specific settings
+    // Optimize chunks
     config.optimization = {
       ...config.optimization,
-      moduleIds: 'deterministic',
       splitChunks: {
         chunks: 'all',
         minSize: 20000,
@@ -49,19 +48,19 @@ const nextConfig = {
         cacheGroups: {
           default: false,
           vendors: false,
-          framework: {
+          commons: {
+            name: 'commons',
             chunks: 'all',
-            name: 'framework',
-            test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
-            priority: 40,
-            enforce: true,
+            minChunks: 2,
+            reuseExistingChunk: true,
           },
           lib: {
             test(module) {
-              return module.size() > 160000 &&
-                /node_modules[/\\]/.test(module.identifier());
+              return module.size() > 160000;
             },
-            name: 'hash-' + Math.random().toString(36).substring(2, 8),
+            name(module) {
+              return `chunk-${module.libIdent({ context: __dirname })}`;
+            },
             priority: 30,
             minChunks: 1,
             reuseExistingChunk: true,

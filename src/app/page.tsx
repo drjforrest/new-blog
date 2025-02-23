@@ -6,8 +6,10 @@ import { FeatureSeriesCard } from '@/components/blog/FeatureSeriesCard';
 import { PresentationCard } from '@/components/presentations/PresentationCard';
 import { CommentsSection } from '@/components/blog/comments-section';
 import { motion } from 'framer-motion';
-import { Globe, Brain } from 'lucide-react';
+import { Globe, Brain, ArrowRight } from 'lucide-react';
 import { siteConfig } from '@/config/site-config';
+import { Card } from '@/components/ui/card';
+import Link from 'next/link';
 
 
 const SectionTitle = ({ children, id }: { children: React.ReactNode; id?: string }) => (
@@ -58,24 +60,67 @@ export default function Home() {
     <div className="bg-background min-h-screen">
       <Hero />
 
+      {/* Featured Series Highlight */}
+      <section className="py-16 bg-gradient-to-b from-primary/5 to-background">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-4xl mx-auto"
+          >
+            <Card className="p-8 bg-surface border border-primary/20 shadow-lg">
+              <div className="flex items-start gap-6">
+                <div className="p-4 rounded-2xl bg-primary/10">
+                  <Globe className="w-12 h-12 text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold mb-3 text-foreground">
+                    Current Feature Series
+                  </h2>
+                  <h3 className="text-2xl font-semibold mb-4 text-primary">
+                    African Digital Development in Data
+                  </h3>
+                  <p className="text-lg text-foreground/70 mb-6">
+                    Explore Africa's digital transformation journey through data visualization and analysis. 
+                    Discover how technology is reshaping the continent's future through Agenda 2063, 
+                    AI innovation, and strategic development.
+                  </p>
+                  <Link 
+                    href="/african-digital-development"
+                    className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors font-medium"
+                  >
+                    Read the series
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Feature Series Section */}
       <section className="py-24 bg-muted/5" id="feature-series">
         <div className="container mx-auto px-4">
-          <SectionTitle>Feature Series</SectionTitle>
+          <SectionTitle>All Feature Series</SectionTitle>
           <div className="grid grid-cols-1 gap-8 max-w-5xl mx-auto">
+            {/* Current Series - More Prominent */}
             <FeatureSeriesCard
-              title={siteConfig.featuredSeries[0].title}
-              description={siteConfig.featuredSeries[0].description}
+              title="African Digital Development in Data"
+              description="Discover the growth of a continent through engaging data visualization and compelling stories of 21st century solutions to decades-long challenges."
               href="/african-digital-development"
               icon={Globe}
+              isCurrent={true}
             />
 
+            {/* Coming Soon Series - More Subtle */}
             <FeatureSeriesCard
               title="Clinical Research & AI Innovation"
               description="An upcoming series examining the evolving landscape of clinical research technology, with a focus on AI integration, decentralized trials, and the future of medical innovation."
               href="/coming-soon"
               icon={Brain}
               isComingSoon={true}
+              variant="secondary"
             />
           </div>
         </div>

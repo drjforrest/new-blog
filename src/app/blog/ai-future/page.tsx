@@ -1,174 +1,115 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { EconomicImpact } from '@/components/visualizations/economic-impact';
-import { SocialDevelopment } from '@/components/visualizations/social-development';
-import { AIGrowthChart } from '@/components/visualizations/charts/AIGrowthChart';
-import { SDGImpactChart } from '@/components/visualizations/charts/SDGImpactChart';
 
-export default function Page() {
+export default function AIFuture() {
   return (
-    <article className="prose prose-lg dark:prose-invert max-w-none">
-      <div className="mb-12">
-        <Link 
-          href="/blog"
-          className="inline-flex items-center gap-2 text-foreground/60 hover:text-primary transition-colors group no-underline"
-        >
-          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-          Back to Blog
-        </Link>
-      </div>
+    <article className="container mx-auto px-4 py-12 max-w-4xl">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-4xl font-bold mb-6">The AI Revolution in Africa</h1>
+        
+        <div className="prose dark:prose-invert max-w-none">
+          <p className="lead text-xl text-foreground/80">
+            Artificial Intelligence is reshaping Africa's digital landscape, offering unprecedented 
+            opportunities for innovation, economic growth, and social development.
+          </p>
 
-      <header className="mb-12">
-        <div className="flex items-center gap-2 text-sm text-foreground/60 mb-4">
-          <span>Jamie Forrest, PhD</span>
-          <span>•</span>
-          <time dateTime="2024-12-26">December 26, 2024</time>
+          <section className="my-12">
+            <h2>Current State of AI in Africa</h2>
+            <p>
+              The African continent is experiencing a surge in AI adoption across various sectors:
+            </p>
+            <ul>
+              <li>Healthcare diagnostics and telemedicine</li>
+              <li>Agricultural optimization and precision farming</li>
+              <li>Financial services and mobile banking</li>
+              <li>Education and skills development</li>
+            </ul>
+          </section>
+
+          <section className="my-12">
+            <h2>Key Innovation Hubs</h2>
+            <p>
+              Several African cities have emerged as AI innovation hubs:
+            </p>
+            <ul>
+              <li>Nairobi, Kenya - East African tech hub</li>
+              <li>Lagos, Nigeria - West African startup ecosystem</li>
+              <li>Cape Town, South Africa - AI research center</li>
+              <li>Kigali, Rwanda - Smart city initiatives</li>
+            </ul>
+          </section>
+
+          <section className="my-12">
+            <Card className="p-6 bg-primary/5">
+              <h3 className="text-xl font-semibold mb-4">Impact Areas</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 bg-background rounded-lg">
+                  <h4 className="font-semibold mb-2">Healthcare</h4>
+                  <p className="text-sm text-foreground/70">
+                    AI-powered diagnostics, disease prediction, and healthcare resource optimization
+                  </p>
+                </div>
+                <div className="p-4 bg-background rounded-lg">
+                  <h4 className="font-semibold mb-2">Agriculture</h4>
+                  <p className="text-sm text-foreground/70">
+                    Crop yield prediction, pest detection, and smart farming solutions
+                  </p>
+                </div>
+                <div className="p-4 bg-background rounded-lg">
+                  <h4 className="font-semibold mb-2">Finance</h4>
+                  <p className="text-sm text-foreground/70">
+                    Credit scoring, fraud detection, and automated customer service
+                  </p>
+                </div>
+                <div className="p-4 bg-background rounded-lg">
+                  <h4 className="font-semibold mb-2">Education</h4>
+                  <p className="text-sm text-foreground/70">
+                    Personalized learning, content translation, and skills assessment
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </section>
+
+          <section className="my-12">
+            <h2>Challenges and Opportunities</h2>
+            <p>
+              While AI presents significant opportunities, several challenges need to be addressed:
+            </p>
+            <ul>
+              <li>Data availability and quality</li>
+              <li>Infrastructure and connectivity</li>
+              <li>Skills gap and talent development</li>
+              <li>Ethical considerations and governance</li>
+            </ul>
+          </section>
         </div>
 
-        <h1>The AI Revolution in Africa: A Path to Transformative Growth</h1>
-
-        <p className="lead">
-          Artificial Intelligence (AI) is poised to redefine Africa’s economic landscape, unlocking unprecedented 
-          growth opportunities and accelerating progress toward sustainable development. By 2030, AI could contribute 
-          <strong>$2.9 trillion</strong> to the African economy, equivalent to a <strong>3% increase in annual GDP growth</strong>.
-        </p>
-      </header>
-
-      <section>
-        <h2>AI as a Catalyst for Economic Growth</h2>
-        <p>
-          AI’s transformative potential extends beyond economic expansion; it is reshaping business operations, market structures, 
-          and employment landscapes through automation, innovation, and the creation of high-tech job opportunities.
-        </p>
-        <p>
-          AI is also expected to create more jobs than it displaces, particularly in emerging sectors. Additionally, AI could help 
-          raise approximately <strong>0.5 million Africans out of poverty annually</strong>, as every 
-          <strong>1% change in GDP</strong> correlates with a <strong>0.74% reduction in poverty levels</strong>.
-        </p>
-        <div className="my-8">
-          <EconomicImpact />
-        </div>
-        <div className="my-12">
-          <Card className="p-6">
-            <AIGrowthChart />
-          </Card>
-        </div>
-      </section>
-
-      <section>
-        <h2>AI for Africa, by Africa</h2>
-        <p>
-          A homegrown AI ecosystem is essential to ensure that AI solutions reflect Africa’s unique needs, values, and priorities. 
-          Developing local AI talent is a cornerstone of this strategy. By investing in education and training programs, African 
-          nations can cultivate a workforce skilled in AI development, deployment, and governance.
-        </p>
-        <p>
-          Encouraging indigenous AI innovations tailored to regional contexts is crucial. Africa’s diverse environments, from 
-          rural agriculture to urban transportation, present unique opportunities for AI-driven solutions. By supporting local 
-          startups and researchers, African nations can foster innovations that address these challenges more effectively than 
-          imported solutions.
-        </p>
-      </section>
-
-      <section>
-        <h2>AI’s Role in Social Development</h2>
-        <p>
-          AI is driving improvements in healthcare, education, agriculture, and financial inclusion. In healthcare, AI enables 
-          predictive diagnostics and AI-assisted treatments. In education, it bridges learning gaps through personalized tools. 
-          AI also enhances precision farming, benefiting smallholder farmers by improving productivity and food security.
-        </p>
-        <p>
-          Financial inclusion is another key area where AI is making strides. AI-powered digital banking services are democratizing 
-          access to financial tools, enabling millions of Africans to save, invest, and insure themselves more effectively.
-        </p>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-8">
-          <div>
-            <SocialDevelopment />
-          </div>
-          <Card className="p-6">
-            <SDGImpactChart />
-          </Card>
-        </div>
-      </section>
-
-      <section>
-        <h2>AI-Driven Agricultural Transformation</h2>
-        <p>
-          AI-powered precision farming technologies are revolutionizing African agriculture by optimizing resource use through 
-          real-time insights into soil conditions, crop health, and weather patterns.
-        </p>
-        <ul>
-          <li><strong>Increased Productivity:</strong> AI equips smallholder farmers with tools to improve yields.</li>
-          <li><strong>Improved Market Access:</strong> AI provides reliable market insights, reducing trade costs.</li>
-          <li><strong>Financial Services:</strong> AI-driven solutions like FarmDrive enable farmers to access loans.</li>
-          <li><strong>Empowering Women:</strong> AI-backed digital platforms support women in agriculture.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Overcoming Challenges</h2>
-        <p>
-          To fully realize AI’s potential, Africa must address key challenges:
-        </p>
-        <ul>
-          <li><strong>Infrastructure Gaps:</strong> Expanding electricity and internet access is crucial.</li>
-          <li><strong>Skill Development:</strong> Investing in AI education will bridge the skills gap.</li>
-          <li><strong>Ethical AI Deployment:</strong> Governance frameworks must mitigate risks such as bias.</li>
-          <li><strong>Regulatory Reforms:</strong> Policies should foster innovation while ensuring inclusivity.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Conclusion</h2>
-        <p>
-          By embracing a balanced approach that prioritizes local AI development, responsible governance, and inclusive policies, 
-          Africa can harness AI’s transformative power for equitable growth. Addressing challenges such as the digital divide, 
-          infrastructure deficits, and ethical considerations will be critical to realizing AI’s full potential.
-        </p>
-        <p>
-          With the right strategies, Africa has the opportunity to become a global leader in AI innovation, driving socio-economic 
-          development and achieving the goals of <strong>Agenda 2063</strong> and the <strong>Sustainable Development Goals (SDGs)</strong>.
-        </p>
-      </section>
-
-      <footer className="mt-16 pt-8 border-t border-foreground/10">
-        <div className="flex flex-wrap gap-2 mb-8">
-          {["AI", "Innovation", "Development", "Digital Economy", "Social Impact"].map((tag) => (
-            <span
-              key={tag}
-              className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-primary/5 text-primary"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <nav className="flex justify-between items-center gap-4">
-          <Link
+        <nav className="flex justify-between items-center mt-12 pt-6 border-t border-border">
+          <Link 
             href="/blog/agenda-2063"
-            className="group flex items-center gap-2 text-foreground/60 hover:text-primary transition-colors no-underline"
+            className="flex items-center gap-2 text-primary hover:text-accent transition-colors"
           >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <div>
-              <div className="text-sm">Previous</div>
-              <div className="font-medium">Agenda 2063</div>
-            </div>
+            <ArrowLeft className="w-4 h-4" />
+            Previous Article
           </Link>
-          <Link
+          <Link 
             href="/blog/transformation-risks"
-            className="group flex items-center gap-2 text-foreground/60 hover:text-primary transition-colors no-underline"
+            className="flex items-center gap-2 text-primary hover:text-accent transition-colors"
           >
-            <div className="text-right">
-              <div className="text-sm">Next</div>
-              <div className="font-medium">Digital Transformation Risks</div>
-            </div>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            Next Article
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </nav>
-      </footer>
+      </motion.div>
     </article>
   );
 }

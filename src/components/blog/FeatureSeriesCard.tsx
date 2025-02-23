@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { LucideIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface FeatureSeriesCardProps {
   title: string;
@@ -10,6 +11,8 @@ interface FeatureSeriesCardProps {
   href: string;
   icon: LucideIcon;
   isComingSoon?: boolean;
+  isCurrent?: boolean;
+  variant?: 'primary' | 'secondary';
 }
 
 export function FeatureSeriesCard({
@@ -18,6 +21,8 @@ export function FeatureSeriesCard({
   href,
   icon: Icon,
   isComingSoon = false,
+  isCurrent = false,
+  variant = 'primary',
 }: FeatureSeriesCardProps) {
   return (
     <Link href={href} className="block">
@@ -25,12 +30,22 @@ export function FeatureSeriesCard({
         whileHover={{ scale: 1.02 }}
         className={`
           relative overflow-hidden rounded-xl 
-          bg-gradient-to-br from-surface to-surface-elevated
-          shadow-lg border border-primary/10
+          ${variant === 'primary' 
+            ? 'bg-gradient-to-br from-surface to-surface-elevated border-primary/10'
+            : 'bg-surface/50 border-border/50'
+          }
+          ${isCurrent ? 'border-2 border-primary' : 'border'}
+          shadow-lg
           p-1
         `}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+        <div className={`
+          absolute inset-0 bg-gradient-to-br 
+          ${variant === 'primary' 
+            ? 'from-primary/5 to-transparent'
+            : 'from-muted/5 to-transparent'
+          }
+        `} />
         
         {/* Animated background elements */}
         <motion.div
@@ -44,8 +59,20 @@ export function FeatureSeriesCard({
 
         <div className="relative p-8">
           <div className="flex items-start gap-6">
-            <div className="p-3 rounded-xl bg-primary/10">
-              <Icon className="w-8 h-8 text-primary" />
+            <div className={`
+              p-3 rounded-xl 
+              ${variant === 'primary' 
+                ? 'bg-primary/10'
+                : 'bg-muted/10'
+              }
+            `}>
+              <Icon className={`
+                w-8 h-8 
+                ${variant === 'primary' 
+                  ? 'text-primary'
+                  : 'text-muted'
+                }
+              `} />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-4 mb-4">
@@ -55,27 +82,18 @@ export function FeatureSeriesCard({
                     Coming Soon
                   </span>
                 )}
+                {isCurrent && (
+                  <span className="px-3 py-1 bg-success/10 text-success rounded-full text-sm font-medium">
+                    Current Series
+                  </span>
+                )}
               </div>
               <p className="text-foreground/70 text-lg leading-relaxed">
                 {description}
               </p>
               <div className="mt-6 flex items-center gap-2 text-primary font-medium">
                 {isComingSoon ? 'Stay tuned' : 'Read the series'}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform group-hover:translate-x-1"
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
+                <ArrowRight className="w-5 h-5" />
               </div>
             </div>
           </div>
