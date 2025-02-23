@@ -2,10 +2,10 @@ export const themeTokens = {
   light: {
     background: "250 250 249",    // Base background
     foreground: "20 20 20",       // Primary text
-    primary: "47 112 193",        // Primary brand
-    accent: "20 184 166",         // Secondary accent
-    success: "21 128 61",         // Success states
-    muted: "113 113 122",         // Muted text
+    primary: "26 58 92",          // Deep Blue - digital focus
+    accent: "214 40 40",          // Crimson - energy/passion
+    success: "42 157 143",        // Emerald - growth
+    muted: "112 66 20",           // Earth Brown - grounding
     surface: {
       base: "255 255 255",        // Card backgrounds
       muted: "245 245 245",       // Muted surfaces
@@ -16,9 +16,9 @@ export const themeTokens = {
   dark: {
     background: "23 23 23",
     foreground: "250 250 249",
-    primary: "59 130 246",
-    accent: "20 184 166",
-    success: "34 197 94",
+    primary: "42 157 143",        // Emerald takes focus in dark mode
+    accent: "214 40 40",          // Crimson maintains energy
+    success: "26 58 92",          // Deep Blue becomes secondary
     muted: "161 161 170",
     surface: {
       base: "32 32 32",
@@ -29,19 +29,20 @@ export const themeTokens = {
   }
 };
 
+// Semantic tokens for consistent spacing, radius, and animations
 export const semanticTokens = {
   spacing: {
-    xs: '0.5rem',
-    sm: '1rem',
-    md: '1.5rem',
-    lg: '2rem',
-    xl: '3rem',
+    xs: '0.5rem',    // 8px
+    sm: '1rem',      // 16px
+    md: '1.5rem',    // 24px
+    lg: '2rem',      // 32px
+    xl: '3rem',      // 48px
   },
   radius: {
-    sm: '0.375rem',
-    md: '0.5rem',
-    lg: '0.75rem',
-    xl: '1rem',
+    sm: '0.375rem',  // 6px
+    md: '0.5rem',    // 8px
+    lg: '0.75rem',   // 12px
+    xl: '1rem',      // 16px
   },
   animation: {
     fast: '0.2s',

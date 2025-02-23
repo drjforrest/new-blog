@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { BookOpen, ChartBar, Presentation } from 'lucide-react';
+import { LineChart, PenTool, Globe, BookOpen, ChartBar, Presentation, FileText } from 'lucide-react';
 import Link from 'next/link';
 
 interface IconFeatureProps {
@@ -17,8 +17,14 @@ function IconFeature({
   description,
   href,
 }: IconFeatureProps) {
+  const isExternal = href.startsWith('http');
+  
   return (
-    <Link href={href}>
+    <Link 
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+    >
       <motion.div 
         className="bg-surface dark:bg-surface-elevated rounded-lg shadow-lg w-[320px] h-[240px] cursor-pointer"
         whileHover={{ scale: 1.02 }}
@@ -39,41 +45,35 @@ function IconFeature({
 }
 
 export function Hero() {
+  const externalLinks = {
+    standardBlog: "https://more-blog.drjforrest.com",
+    presentations: "https://more-blog.drjforrest.com/presentations"
+  };
+
   return (
     <div className="relative w-full min-h-[calc(100vh-80px)] flex items-center justify-center py-24">
       
-      {/* Hero Background Ring */}
-      <motion.div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                  w-[720px] h-[720px] border-[1.5px] 
-                  border-[#2A9D8F]/10 rounded-full z-[-1]"
-        style={{
-          background: 'radial-gradient(circle, transparent 40%, rgba(42, 157, 143, 0.015) 80%)'
-        }}
-        animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.05, 1] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-      />
-
       {/* Hero Content */}
       <div className="max-w-6xl mx-auto">
         
         {/* Hero Icons */}
-        <motion.div 
-          className="flex items-center justify-center gap-4 mb-12"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="p-4 bg-[#26385C]/10 rounded-2xl">
-            <BookOpen className="w-10 h-10 text-[#26385C]" />
-          </div>
-          <div className="p-4 bg-[#E63946]/10 rounded-2xl">
-            <ChartBar className="w-10 h-10 text-[#E63946]" />
-          </div>
-          <div className="p-4 bg-[#2A9D8F]/10 rounded-2xl">
-            <Presentation className="w-10 h-10 text-[#2A9D8F]" />
-          </div>
-        </motion.div>
+          {/* Hero Icons */}
+          <motion.div 
+            className="flex items-center justify-center gap-4 mb-12"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="p-4 bg-primary/10 rounded-2xl">
+              <LineChart className="w-10 h-10 text-primary" />
+            </div>
+            <div className="p-4 bg-[#E63946]/10 rounded-2xl">
+              <PenTool className="w-10 h-10 text-[#E63946]" />
+            </div>
+            <div className="p-4 bg-success/10 rounded-2xl">
+              <Globe className="w-10 h-10 text-success" />
+            </div>
+          </motion.div>
 
         {/* Hero Text */}
         <div className="w-full mx-auto px-8 flex flex-col items-center relative">
@@ -84,7 +84,7 @@ export function Hero() {
               transition={{ duration: 0.5 }}
               className="text-[#26385C] text-6xl font-bold mb-6"
             >
-              Tech Tabs
+              Tech Tabs of Global of Health
             </motion.h1>
             
             <motion.h2
@@ -93,7 +93,7 @@ export function Hero() {
               transition={{ delay: 0.1, duration: 0.5 }}
               className="text-foreground/90 text-3xl font-medium mb-8"
             >
-              Keeping Tabs on Technology and Global Health & Development
+              Keeping Tabs on Technology and Innovation in Global Health & Development
             </motion.h2>
           </div>
 
@@ -105,22 +105,22 @@ export function Hero() {
             className="flex gap-8 justify-center"
           >
             <IconFeature
-              icon={BookOpen}
-              title="Latest Blog Posts"
-              description="Regular updates and insights on technology and global health developments"
-              href="#latest-articles"
+              icon={FileText}
+              title="Standard Blog Posts"
+              description="Short musings on technology and innovation in global health"
+              href={externalLinks.standardBlog}
             />
             <IconFeature
-              icon={ChartBar}
-              title="Research Narratives"
-              description="In-depth, data-driven analysis of key topics in digital health transformation"
-              href="#feature-series"
+              icon={LineChart}
+              title="Featured Series"
+              description="In-depth analysis of African Digital Development"
+              href="/african-digital-development"
             />
             <IconFeature
               icon={Presentation}
-              title="Presentations & MARPs"
-              description="Method and Results Presentations (MARPs) with interactive visualizations"
-              href="#presentations"
+              title="Marp Presentations"
+              description="Collection of presentations on global health tech"
+              href={externalLinks.presentations}
             />
           </motion.div>
         </div>

@@ -41,11 +41,13 @@ export function Hero() {
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              African Digital Development
+            Tech Tabs of Global of Health
             </h1>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-              Discover the growth of a continent through engaging data visualization and
-              compelling stories of 21st century solutions to decades-long challenges.
+             A blog that keeps tabs on technology and innovation in global health & development.
+            </p>
+            <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
+            Compelling narratives. Data-driven insights & visualizations. Contemporary conversations.
             </p>
           </motion.div>
         </div>

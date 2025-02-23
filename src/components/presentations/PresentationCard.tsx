@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Presentation, Clock } from 'lucide-react';
+import { useState } from 'react';
 
 interface PresentationCardProps {
     title: string;
@@ -19,6 +21,8 @@ export function PresentationCard({
     href,
     imageUrl
 }: PresentationCardProps) {
+    const [imageError, setImageError] = useState(false);
+
     return (
         <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -30,15 +34,22 @@ export function PresentationCard({
                 <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl 
                             transition-all duration-300 overflow-hidden border border-primary/10
                             transform hover:-translate-y-2 hover:border-primary/20">
-                    {imageUrl && (
-                        <div className="h-48 overflow-hidden">
-                            <img 
-                                src={imageUrl} 
+                    <div className="h-48 overflow-hidden bg-primary/5">
+                        {imageUrl && !imageError ? (
+                            <Image 
+                                src={imageUrl}
                                 alt={title}
+                                width={400}
+                                height={200}
                                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                                onError={() => setImageError(true)}
                             />
-                        </div>
-                    )}
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-primary/10">
+                                <Presentation className="w-12 h-12 text-primary/40" />
+                            </div>
+                        )}
+                    </div>
                     <div className="p-6">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
@@ -6,11 +5,6 @@ import { Footer } from "@/components/layout/footer";
 import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Blog | Dr. Jamie I. Forrest",
-  description: "Blog about African digital development and more",
-};
 
 export default function RootLayout({
   children,

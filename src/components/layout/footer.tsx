@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { LineChart, ExternalLink } from 'lucide-react';
+import { siteConfig } from '@/config/site-config';
 
 interface FooterProps extends React.HTMLAttributes<HTMLElement> {
   copyrightText?: string;
@@ -12,11 +13,19 @@ interface FooterProps extends React.HTMLAttributes<HTMLElement> {
 
 const footerLinks = {
   navigation: [
-    { label: 'Main', href: 'https://drjforrest.com' },
-    { label: 'Apps', href: 'https://apps.drjforrest.com' },
+    { label: 'Main Site', href: siteConfig.externalLinks.mainSite },
+    { label: 'Standard Blog', href: siteConfig.externalLinks.standardBlog },
+    { label: 'Presentations', href: siteConfig.externalLinks.presentations },
   ],
-  resources: [
-    { label: 'Interactive Dashboards', href: '/bonus' },
+  series: [
+    { 
+      label: 'African Digital Development', 
+      href: '/african-digital-development' 
+    },
+    { 
+      label: 'Interactive Dashboards', 
+      href: '/bonus' 
+    },
   ],
 };
 
@@ -70,7 +79,7 @@ export function Footer({
           <div className="md:col-span-2 md:flex md:justify-end">
             <div className="grid grid-cols-2 gap-8">
               <FooterSection title="Navigation" links={footerLinks.navigation} />
-              <FooterSection title="Resources" links={footerLinks.resources} />
+              <FooterSection title="Series" links={footerLinks.series} />
             </div>
           </div>
         </div>

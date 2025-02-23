@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/theme/theme-toggle";
 import { AnimatePresence } from 'framer-motion';
-import { LineChart, FileText, LayoutGrid, Menu, X } from "lucide-react";
+import { LineChart, FileText, Presentation, BookOpen, Menu, X } from "lucide-react";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,8 +23,24 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { href: "https://drjforrest.com", icon: FileText, label: "Main", external: true },
-    { href: "https://drjforrest.com", icon: LayoutGrid, label: "Apps", external: true },
+    { 
+      href: "https://more-blog.drjforrest.com", 
+      icon: FileText, 
+      label: "Standard Blog", 
+      external: true 
+    },
+    { 
+      href: "/african-digital-development", 
+      icon: LineChart, 
+      label: "Featured Series", 
+      external: false 
+    },
+    { 
+      href: "https://more-blog.drjforrest.com/presentations", 
+      icon: Presentation, 
+      label: "Presentations", 
+      external: true 
+    },
   ];
 
   return (

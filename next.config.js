@@ -78,7 +78,16 @@ const nextConfig = {
     };
 
     return config;
-  }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/tech-tabs-of-global-of-health',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

@@ -6,7 +6,9 @@ import { FeatureSeriesCard } from '@/components/blog/FeatureSeriesCard';
 import { PresentationCard } from '@/components/presentations/PresentationCard';
 import { CommentsSection } from '@/components/blog/comments-section';
 import { motion } from 'framer-motion';
-import { Globe, BarChart2 } from "lucide-react";
+import { Globe, Brain } from 'lucide-react';
+import { siteConfig } from '@/config/site-config';
+
 
 const SectionTitle = ({ children, id }: { children: React.ReactNode; id?: string }) => (
   <div className="text-center mb-16" id={id}>
@@ -16,39 +18,39 @@ const SectionTitle = ({ children, id }: { children: React.ReactNode; id?: string
 );
 
 export default function Home() {
-  // Example external blog posts - replace with your actual external blog links
+  // Real external blog posts 
   const externalBlogPosts = [
     {
-      title: "The Future of Digital Payments in Africa",
-      description: "Exploring the revolutionary impact of mobile money and digital payment systems across the African continent.",
-      href: "https://your-mdx-blog.com/digital-payments",
-      date: "2025-02-15"
+      title: "AI Integration in Clinical Research",
+      description: "A comprehensive guide to practical applications of AI in clinical research and the CRO industry, exploring how artificial intelligence is modernizing and transforming clinical trials.",
+      href: "https://more-blog.drjforrest.com/posts/content/ai-clinical-research.html",
+      date: "2025-01-14"
     },
     {
-      title: "Tech Hubs Rising: Innovation Centers in Africa",
-      description: "A deep dive into the growing ecosystem of technology innovation hubs transforming African cities.",
-      href: "https://your-mdx-blog.com/tech-hubs",
-      date: "2025-02-01"
+      title: "AI and Digital Disinformation in Public Health",
+      description: "Exploring how AI can be leveraged to combat digital disinformation in public health communications, including automated fact-checking and trend monitoring.",
+      href: "https://more-blog.drjforrest.com/posts/content/ai-disinformation.html",
+      date: "2025-02-17"
     }
   ];
 
-  // Example presentations - replace with your actual presentations
+  // Real presentations
   const presentations = [
     {
-      title: "Digital Transformation in African Markets",
-      description: "A comprehensive look at how digital technologies are reshaping African markets and creating new opportunities for growth and innovation.",
-      duration: "45 min",
-      date: "2025-02-19",
-      href: "/presentations/digital-transformation",
-      imageUrl: "/images/presentations/digital-transformation.jpg"
+      title: "Guide to Creating Presentations with Marp",
+      description: "A comprehensive guide to using Marp for creating beautiful, version-controlled presentations using Markdown syntax.",
+      duration: "30 min",
+      date: "2025-02-21",
+      href: "https://more-blog.drjforrest.com/posts/content/marp-guide.html",
+      imageUrl: "/images/presentations/marp-guide.jpg"
     },
     {
-      title: "Future of Mobile Money",
-      description: "Exploring the evolution of mobile payment systems and their impact on financial inclusion across the continent.",
-      duration: "30 min",
-      date: "2025-02-15",
-      href: "/presentations/mobile-money",
-      imageUrl: "/images/presentations/mobile-money.jpg"
+      title: "AI in Clinical Research 2025",
+      description: "Technical deep dive into AI-driven innovations transforming clinical trials, including implementation details and future perspectives.",
+      duration: "45 min",
+      date: "2025-02-22",
+      href: "https://more-blog.drjforrest.com/posts/content/ai-clinical-2025.html",
+      imageUrl: "/images/presentations/ai-clinical.jpg"
     }
   ];
 
@@ -62,17 +64,17 @@ export default function Home() {
           <SectionTitle>Feature Series</SectionTitle>
           <div className="grid grid-cols-1 gap-8 max-w-5xl mx-auto">
             <FeatureSeriesCard
-              title="African Digital Development in Health"
-              description="A comprehensive exploration of digital transformation in African healthcare, examining the intersection of technology, public health, and economic development through data-driven analysis. This series investigates current initiatives, challenges, and future opportunities in digital health across the continent."
+              title={siteConfig.featuredSeries[0].title}
+              description={siteConfig.featuredSeries[0].description}
               href="/african-digital-development"
               icon={Globe}
             />
 
             <FeatureSeriesCard
-              title="Global Tech Policy in Healthcare"
-              description="An upcoming series examining the evolving landscape of healthcare technology policy across different regions, with a focus on regulatory frameworks, digital governance, and cross-border cooperation in health systems."
+              title="Clinical Research & AI Innovation"
+              description="An upcoming series examining the evolving landscape of clinical research technology, with a focus on AI integration, decentralized trials, and the future of medical innovation."
               href="/coming-soon"
-              icon={BarChart2}
+              icon={Brain}
               isComingSoon={true}
             />
           </div>
@@ -82,7 +84,7 @@ export default function Home() {
       {/* Latest Articles Section */}
       <section className="py-24 bg-background" id="latest-articles">
         <div className="container mx-auto px-4">
-          <SectionTitle>Latest Articles</SectionTitle>
+          <SectionTitle>Latest Blog Posts</SectionTitle>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {externalBlogPosts.map((post, index) => (
               <ExternalBlogCard
@@ -100,7 +102,7 @@ export default function Home() {
       {/* Presentations Section */}
       <section className="py-24 bg-muted/5" id="presentations">
         <div className="container mx-auto px-4">
-          <SectionTitle>Presentations & MARPs</SectionTitle>
+          <SectionTitle>Marp Presentations</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {presentations.map((presentation) => (
               <PresentationCard
