@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/layout/Navigation";
-import { PageNav } from "@/components/layout/PageNav";
 import { Footer } from "@/components/layout/footer";
 import { Providers } from "./providers";
 
@@ -18,7 +17,6 @@ export default function RootLayout({
         <Providers>
           <div className="relative min-h-screen flex flex-col">
             <Navigation />
-            <PageNav />
             <main className="flex-1 pt-28">
               {children}
             </main>

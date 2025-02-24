@@ -2,17 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import ThemeToggle from "@/components/theme/theme-toggle";
-import { AnimatePresence } from 'framer-motion';
-
-// Dynamically import icons to optimize loading
-const FileText = dynamic(() => import("lucide-react").then((mod) => mod.FileText));
-const LayoutGrid = dynamic(() => import("lucide-react").then((mod) => mod.LayoutGrid));
-const Menu = dynamic(() => import("lucide-react").then((mod) => mod.Menu));
-const X = dynamic(() => import("lucide-react").then((mod) => mod.X));
-const LineChart = dynamic(() => import("lucide-react").then((mod) => mod.LineChart));
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { PresenceWrapper } from "@/components/ui/motion-wrapper";
+import { LineChart, FileText, LayoutGrid, Menu, X } from "lucide-react";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,8 +23,8 @@ export function Navigation() {
   }, []);
 
   const navLinks = [
-    { href: "https://apps.drjforrest.com", icon: FileText, label: "Apps", external: true },
-    { href: "https://drjforrest.com", icon: LayoutGrid, label: "Main", external: true },
+    { href: "https://blog.drjforrest.com", icon: FileText, label: "Blog", external: true },
+    { href: "https://drjforrest.com", icon: LayoutGrid, label: "Apps", external: true },
   ];
 
   return (
@@ -44,10 +38,16 @@ export function Navigation() {
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Left Side: Logo + Name */}
         <Link href="/" className="group flex items-center gap-3 text-foreground hover:text-primary">
-          <LineChart className="w-8 h-8" />
-          <span className="font-semibold text-lg sm:text-xl">
+          <div className="p-1.5 rounded-lg bg-primary/10">
+            <LineChart className="w-5 h-5 text-primary" />
+          </div>
+          <motion.span
+            className="font-semibold text-lg tracking-tight"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
             Dr. Jamie I. Forrest
-          </span>
+          </motion.span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -58,12 +58,16 @@ export function Navigation() {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className="flex items-center gap-2 text-foreground hover:text-primary transition"
+              className="flex items-center gap-2 text-foreground hover:text-primary transition group"
             >
-              <div>
-                <link.icon className="w-5 h-5" />
-              </div>
-              <span className="hidden sm:inline">{link.label}</span>
+              <motion.div 
+                className="p-1.5 rounded-lg bg-primary/0 group-hover:bg-primary/10 transition-colors"
+                whileHover={{ scale: 1.05 }} 
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <link.icon className="w-4 h-4 text-foreground group-hover:text-primary transition-colors" />
+              </motion.div>
+              <span className="hidden sm:inline font-medium">{link.label}</span>
             </Link>
           ))}
           <ThemeToggle />
@@ -79,34 +83,53 @@ export function Navigation() {
             aria-label="Toggle menu"
             className="hover:bg-accent/10"
           >
-            <div>
+            <motion.div animate={{ rotate: isMobileMenuOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </div>
+            </motion.div>
           </Button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border/50">
-          <div className="container mx-auto px-4 py-4 space-y-4">
-            {navLinks.map((link) => (
-              <div key={link.label}>
-                <Link
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-2 p-2 rounded-md hover:bg-accent/10 transition-colors duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <link.icon className="h-5 w-5" />
-                  {link.label}
-                </Link>
+      <div className="md:hidden">
+        <PresenceWrapper>
+          {isMobileMenuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              className="bg-background border-t border-border/50"
+            >
+              <div className="container mx-auto px-4 py-4 space-y-4">
+                {navLinks.map((link) => (
+                  <motion.div
+                    key={link.label}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -20, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Link
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      className="flex items-center gap-3 p-2 rounded-md hover:bg-accent/10 transition-colors duration-200"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <div className="p-1.5 rounded-lg bg-primary/10">
+                        <link.icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="font-medium">{link.label}</span>
+                    </Link>
+                  </motion.div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      )}
+            </motion.div>
+          )}
+        </PresenceWrapper>
+      </div>
     </header>
   );
 }

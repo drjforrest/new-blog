@@ -1,13 +1,12 @@
 'use client';
 
-import { Hero } from '@/components/Hero';
+import { Hero } from '@/components/layout/hero';
 import { ExternalBlogCard } from '@/components/blog/ExternalBlogCard';
 import { FeatureSeriesCard } from '@/components/blog/FeatureSeriesCard';
 import { PresentationCard } from '@/components/presentations/PresentationCard';
 import { CommentsSection } from '@/components/blog/comments-section';
 import { motion } from 'framer-motion';
 import { Globe, Brain, ArrowRight } from 'lucide-react';
-import { siteConfig } from '@/config/site-config';
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 

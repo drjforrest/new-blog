@@ -41,7 +41,7 @@ export function Hero() {
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Tech Tabs of Global of Health
+            Tech Tabs
             </h1>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
              A blog that keeps tabs on technology and innovation in global health & development.
