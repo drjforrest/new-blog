@@ -16,7 +16,7 @@ export default function Agenda2063() {
     <div className="prose dark:prose-invert max-w-none">
       <h1>Agenda 2063: The Digital Transformation of a Continent</h1>
       
-      When the **African Union adopted Agenda 2063 in 2015**, it recognized that digital transformation would be fundamental to Africa's future. Nearly a decade later, this vision has evolved into a comprehensive framework for harnessing digital technologies, with implications that reach far beyond simple technological advancement. As Africa positions itself in the global digital landscape, this transformation represents not just technological progress, but a reimagining of how a **continent of 1.4 billion people can leverage digital innovation** to address longstanding development challenges.
+      When the African Union adopted Agenda 2063 in 2015, it recognized that digital transformation would be fundamental to Africa's future. Nearly a decade later, this vision has evolved into a comprehensive framework for harnessing digital technologies, with implications that reach far beyond simple technological advancement. As Africa positions itself in the global digital landscape, this transformation represents not just technological progress, but a reimagining of how a continent of 1.4 billion people can leverage digital innovation to address longstanding development challenges.
 
       <div className="my-4">
         What perhaps was not known at the time of writing the Digital Transformation Strategy is that the period of which the plan would cover, may very well end up representing the greatest period of global digital transformation since the adoption of personal computing. To seize this moment and leapfrog into the AI revolution before us, Africans will find comfort and guidance in the policy framework's broad applicability.
@@ -61,7 +61,7 @@ export default function Agenda2063() {
       </Suspense>
 
       <h2>Realizing the Vision</h2>
-      Now at the strategy's midpoint, several critical questions emerge. How can we ensure digital transformation benefits all Africans, not just those in urban centers or technology hubs? **What role should different stakeholders - governments, private sector, civil society - play in implementing the strategy? And perhaps most pressingly, how can Africa harness the AI revolution to accelerate its development goals?** The answers to these questions will shape not just the success of the Digital Transformation Strategy, but the very nature of African development in the decades to come.
+      Now at the strategy's midpoint, several critical questions emerge. How can we ensure digital transformation benefits all Africans, not just those in urban centers or technology hubs? What role should different stakeholders - governments, private sector, civil society - play in implementing the strategy? And perhaps most pressingly, how can Africa harness the AI revolution to accelerate its development goals? The answers to these questions will shape not just the success of the Digital Transformation Strategy, but the very nature of African development in the decades to come.
 
       <Suspense fallback={<div className="animate-pulse h-64 bg-primary/5 rounded-lg" />}>
         <Card className="my-8 p-6">
@@ -69,7 +69,7 @@ export default function Agenda2063() {
         </Card>
       </Suspense>
 
-      Africa's youth population is its greatest asset in the digital age and the true promise for realizing this vision. With **60% of its population under 25**, the continent has the world's youngest workforce, positioning it as a future hub for innovation, entrepreneurship, and digital transformation. The rapid growth of **youth-led tech startups, digital learning participation, and workforce expansion** highlights how this demographic shift is fueling economic opportunity. Harnessing this potential through **education, investment, and digital inclusion** will be key to unlocking sustainable, technology-driven growth.
+      Africa's youth population is its greatest asset in the digital age and the true promise for realizing this vision. With 60% of its population under 25, the continent has the world's youngest workforce, positioning it as a future hub for innovation, entrepreneurship, and digital transformation. The rapid growth of youth-led tech startups, digital learning participation, and workforce expansion highlights how this demographic shift is fueling economic opportunity. Harnessing this potential through education, investment, and digital inclusion will be key to unlocking sustainable, technology-driven growth.
 
       <hr className="my-8" />
 
