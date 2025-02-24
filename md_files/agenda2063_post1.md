@@ -82,7 +82,7 @@ The strategy establishes five fundamental pillars that form the foundation of Af
 ## Implementation Progress & Country Leadership
 
 
-The implementation of digital strategies has revealed a mix of progress and challenges. While some countries and regions have made significant strides in expanding digital infrastructure and investing in skills development, others face persistent barriers to digital inclusion. These disparities highlight the critical role of leadership and coordinated action, particularly in resource allocation and resource-sharing. A deeper exploration of these challenges and opportunities is available in the [[link: third section]].  
+The implementation of digital strategies has revealed a mix of progress and challenges. While some countries and regions have made significant strides in expanding digital infrastructure and investing in skills development, others face persistent barriers to digital inclusion. These disparities highlight the critical role of leadership and coordinated action, particularly in resource allocation and resource-sharing. A deeper exploration of these challenges and opportunities is available in the third article.
 
 Across Africa, several nations stand out as exemplars of digital innovation. For instance, Rwanda has emerged as a model for digital transformation. The country has successfully implemented drone delivery services that deliver critical supplies, like medical essentials and blood, to remote areas. Kenya, on the other hand, has become synonymous with financial inclusion through its mobile money revolution, boasting over 145.8 million active mobile money accounts—the highest in Africa.  
 

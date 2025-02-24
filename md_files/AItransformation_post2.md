@@ -67,7 +67,9 @@ AI is revolutionizing education and public services, making learning more access
 
 AI aligns with **128 targets across all Sustainable Development Goals (SDGs)**, demonstrating its potential to accelerate progress across multiple sectors. In healthcare, AI-driven diagnostics and predictive analytics are improving patient outcomes and expanding access to medical services in underserved areas. In education, AI-powered adaptive learning platforms are personalizing instruction to accommodate diverse learning needs, particularly in regions facing teacher shortages. 
 
-Additionally, **gender equality and digital identity initiatives** are playing a crucial role in ensuring AI-driven transformation remains inclusive. AI-powered programs are being leveraged to close gender gaps in digital literacy and workforce participation, providing women and marginalized groups with greater opportunities in STEM fields. Furthermore, advancements in **digital identity solutions**, such as biometric authentication and decentralized identity systems, are facilitating financial inclusion and enabling access to essential services, ensuring that all individuals, regardless of socioeconomic status, can fully participate in the digital economy.
+Additionally, **gender equality and digital identity initiatives** are playing a crucial role in ensuring AI-driven transformation remains inclusive. AI-powered programs are being leveraged to close gender gaps in digital literacy and workforce participation, providing women and marginalized groups with greater opportunities in STEM fields.
+
+Furthermore, advancements in **digital identity solutions**, such as biometric authentication and decentralized identity systems, are facilitating financial inclusion and enabling access to essential services, ensuring that all individuals, regardless of socioeconomic status, can fully participate in the digital economy.
 
 ### Key AI-Driven Social Initiatives:
 
