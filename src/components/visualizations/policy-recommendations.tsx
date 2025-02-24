@@ -1,8 +1,9 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function PolicyRecommendations() {
+export const PolicyRecommendations: React.FC = () => {
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -14,4 +15,6 @@ export default function PolicyRecommendations() {
       <p>Visualization coming soon...</p>
     </motion.div>
   );
-}
+};
+
+export default PolicyRecommendations;

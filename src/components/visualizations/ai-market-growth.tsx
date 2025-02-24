@@ -18,7 +18,7 @@ const data = [
   { year: '2025', value: 2.9 },
 ];
 
-function AIMarketGrowth() {
+export const AIMarketGrowth: React.FC = () => {
   return (
     <Card className="p-6">
       <h3 className="text-lg font-semibold mb-4">AI Market Growth Projection</h3>
@@ -27,6 +27,6 @@ function AIMarketGrowth() {
       </div>
     </Card>
   );
-}
+};
 
 export default AIMarketGrowth;

@@ -44,8 +44,10 @@ export default function AfricanDigitalDevelopment() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-5xl font-bold mb-8 bg-gradient-to-r from-primary to-success bg-clip-text text-transparent">
-              African Digital Development in Data
+            <h1 className="text-5xl font-bold mb-8 inline-block">
+              <span className="bg-gradient-to-r from-primary to-success bg-clip-text text-transparent">
+                African Digital Development in Data
+              </span>
             </h1>
             <p className="text-xl text-foreground/70 mb-12">
               Explore Africa's digital transformation journey through interactive visualizations 

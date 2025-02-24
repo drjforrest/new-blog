@@ -49,7 +49,7 @@ const data = [
   }
 ];
 
-function CyberVulnerabilities() {
+export const CyberVulnerabilities: React.FC = () => {
   return (
     <Card className="p-6">
       <div className="flex justify-between items-start mb-4">

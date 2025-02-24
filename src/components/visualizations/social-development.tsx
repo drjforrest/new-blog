@@ -15,43 +15,43 @@ import {
 const initiatives = [
   {
     title: "SDG Impact",
-    description: "Supporting 128 targets across all Sustainable Development Goals",
+    description: "AI can support 128 targets across all SDGs, enhancing efficiency & productivity. Focus on policies and regulations to ensure transparency, accountability, and ethical standards.",
     icon: Target,
     color: "text-success"
   },
   {
     title: "Healthcare",
-    description: "Shaping the future of healthcare delivery and access",
+    description: "Improving healthcare access, diagnostics, and drug development. Digital health strategies and intersectoral collaboration between ICT and health sectors are crucial.",
     icon: Heart,
     color: "text-accent"
   },
   {
     title: "Education",
-    description: "AI-enabled quality education through e-Learning",
+    description: "**AI-enabled quality education** via platforms like Coursera and Smart Africa Digital Academy [4]. Focus on digital literacy programs at the grassroots level.",
     icon: BookOpen,
     color: "text-primary"
   },
   {
     title: "Digital Identity",
-    description: "99.9% digital legal identity coverage targeted by 2030",
+    description: "Targeting 99.9% digital legal identity coverage by 2030** [6]. Legal identity is a 'right' enabling gender equality, social protection, financial inclusion, and improved governance.",
     icon: Fingerprint,
     color: "text-primary"
   },
   {
     title: "Gender Equality",
-    description: "Leveling the playing field through digital platforms",
+    description: "**Digital platforms can level the playing field**, but address gender unsteadiness within STEM. Less than 30% of women are reported in STEM fields].",
     icon: Users2,
     color: "text-accent"
   },
   {
     title: "Public Services",
-    description: "Improved service delivery and governance",
+    description: "Improved service delivery and governance** through digital platforms [8]. Digital governance enhances efficiency, reduces duplication, combats fraud, and improves civic engagement.",
     icon: Building2,
     color: "text-success"
   }
 ];
 
-function SocialDevelopment() {
+export const SocialDevelopment: React.FC = () => {
   return (
     <div className="space-y-4">
       {initiatives.map((initiative, index) => (
@@ -76,6 +76,6 @@ function SocialDevelopment() {
       ))}
     </div>
   );
-}
+};
 
 export default SocialDevelopment;

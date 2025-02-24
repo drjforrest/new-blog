@@ -9,7 +9,7 @@ const Chart = dynamic(
   { ssr: false }
 );
 
-function AIEconomicDashboard() {
+export const AIEconomicDashboard: React.FC = () => {
   return (
     <Card className="w-full">
       <CardContent className="p-6">
@@ -17,6 +17,6 @@ function AIEconomicDashboard() {
       </CardContent>
     </Card>
   );
-}
+};
 
 export default AIEconomicDashboard;

@@ -24,18 +24,18 @@ const metrics = [
   { label: 'Projected Workforce Growth by 2040', value: '+500M', trend: 'Fastest Globally' },
 ];
 
-function YouthDevelopment() {
+export const YouthDevelopment: React.FC = () => {
   return (
     <Card className="p-6">
       <div className="space-y-8">
         <h3 className="text-lg font-semibold mb-4">Africa's Young Population: A Digital-First Workforce</h3>
         <p className="text-sm text-muted-foreground">
-          With **60% of its population under 25**, Africa has the world's youngest workforce, presenting an unprecedented opportunity for digital transformation and innovation.
+          With <strong>60% of its population under 25</strong>, Africa has the world's youngest workforce, presenting an unprecedented opportunity for digital transformation and innovation.
         </p>
         <Chart data={data} metrics={metrics} />
       </div>
     </Card>
   );
-}
+};
 
 export default YouthDevelopment;

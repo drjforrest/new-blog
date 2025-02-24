@@ -9,13 +9,13 @@ const Chart = dynamic(
   { ssr: false }
 );
 
-function CountryLeadership() {
+export const CountryLeadership: React.FC = () => {
   return (
     <Card className="p-6">
       <h3 className="text-lg font-semibold mb-4">Digital Transformation Leadership</h3>
       <Chart />
     </Card>
   );
-}
+};
 
 export default CountryLeadership;

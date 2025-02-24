@@ -39,7 +39,7 @@ const data = [
   }
 ];
 
-function SectorTransformation() {
+export const SectorTransformation: React.FC = () => {
   return (
     <Card className="p-6">
       <div className="flex justify-between items-start mb-4">

@@ -10,7 +10,7 @@ const Chart = dynamic(
   { ssr: false }
 );
 
-function AfricaDevelopmentDashboard() {
+export const AfricaDevelopmentDashboard: React.FC = () => {
   return (
     <div className="w-full">
       <Tabs defaultValue="digital-access" className="w-full">
@@ -64,6 +64,6 @@ function AfricaDevelopmentDashboard() {
       </Tabs>
     </div>
   );
-}
+};
 
 export default AfricaDevelopmentDashboard;

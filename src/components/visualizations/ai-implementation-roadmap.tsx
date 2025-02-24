@@ -49,7 +49,7 @@ const data = [
   }
 ];
 
-function AIImplementationRoadmap() {
+export const AIImplementationRoadmap: React.FC = () => {
   return (
     <Card className="p-6">
       <div className="flex justify-between items-start mb-4">
@@ -91,6 +91,6 @@ function AIImplementationRoadmap() {
       </div>
     </Card>
   );
-}
+};
 
 export default AIImplementationRoadmap;

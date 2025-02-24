@@ -81,7 +81,7 @@ const strategies = [
   }
 ];
 
-function MitigationStrategies() {
+export const MitigationStrategies: React.FC = () => {
   return (
     <div className="space-y-4">
       {strategies.map((strategy, index) => (
@@ -120,6 +120,6 @@ function MitigationStrategies() {
       ))}
     </div>
   );
-}
+};
 
 export default MitigationStrategies;

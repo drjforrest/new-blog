@@ -39,7 +39,7 @@ const data = [
   }
 ];
 
-function InfrastructureGaps() {
+export const InfrastructureGaps: React.FC = () => {
   return (
     <Card className="p-6">
       <div className="flex justify-between items-start mb-4">

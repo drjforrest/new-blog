@@ -28,10 +28,10 @@ export function PresentationCard({
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="group relative"
+            className="group relative h-full"
         >
-            <Link href={href}>
-                <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl 
+            <Link href={href} className="h-full block">
+                <div className="relative h-full bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl 
                             transition-all duration-300 overflow-hidden border border-primary/10
                             transform hover:-translate-y-2 hover:border-primary/20">
                     <div className="h-48 overflow-hidden bg-primary/5">
@@ -43,6 +43,7 @@ export function PresentationCard({
                                 height={200}
                                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                                 onError={() => setImageError(true)}
+                                priority
                             />
                         ) : (
                             <div className="w-full h-full flex items-center justify-center bg-primary/10">

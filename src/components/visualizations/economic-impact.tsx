@@ -45,7 +45,7 @@ const impacts = [
   }
 ];
 
-function EconomicImpact() {
+export const EconomicImpact: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {impacts.map((impact, index) => (
@@ -85,6 +85,6 @@ function EconomicImpact() {
       ))}
     </div>
   );
-}
+};
 
 export default EconomicImpact;

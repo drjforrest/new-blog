@@ -9,13 +9,13 @@ const Chart = dynamic(
   { ssr: false }
 );
 
-function DigitalVisionExplorer() {
+export const DigitalVisionExplorer: React.FC = () => {
   return (
     <Card className="p-6">
       <h3 className="text-lg font-semibold mb-4">Digital Vision Progress Tracking</h3>
       <Chart />
     </Card>
   );
-}
+};
 
 export default DigitalVisionExplorer;

@@ -27,16 +27,16 @@ export function FeatureSeriesCard({
   return (
     <Link href={href} className="block">
       <motion.div
-        whileHover={{ scale: 1.02 }}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        whileHover={{ y: -8, transition: { duration: 0.2 } }}
         className={`
-          relative overflow-hidden rounded-xl 
+          relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300
           ${variant === 'primary' 
             ? 'bg-gradient-to-br from-surface to-surface-elevated border-primary/10'
             : 'bg-surface/50 border-border/50'
           }
           ${isCurrent ? 'border-2 border-primary' : 'border'}
-          shadow-lg
-          p-1
         `}
       >
         <div className={`
@@ -57,7 +57,7 @@ export function FeatureSeriesCard({
           <Icon size={256} />
         </motion.div>
 
-        <div className="relative p-8">
+        <div className="relative p-8 pb-10">
           <div className="flex items-start gap-6">
             <div className={`
               p-3 rounded-xl 

@@ -60,7 +60,13 @@ const pillars = [
   },
 ];
 
-function PillarsCarousel() {
+interface Activity {
+  title: string;
+  goal: string;
+  activities: string[];
+}
+
+export const PillarsCarousel: React.FC = () => {
   const [index, setIndex] = useState(0);
   
   const prevSlide = () => {
@@ -82,7 +88,7 @@ function PillarsCarousel() {
         <h3 className="text-2xl font-bold text-primary">{pillars[index].title}</h3>
         <p className="text-foreground/70 mt-2">{pillars[index].goal}</p>
         <ul className="mt-4 space-y-2 text-foreground/80">
-          {pillars[index].activities.map((activity, i) => (
+          {pillars[index].activities.map((activity: string, i: number) => (
             <li key={i} className="list-disc list-inside">{activity}</li>
           ))}
         </ul>
@@ -96,6 +102,6 @@ function PillarsCarousel() {
       </button>
     </Card>
   );
-}
+};
 
 export default PillarsCarousel;

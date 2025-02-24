@@ -6,7 +6,13 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const sectors = [
+interface Sector {
+  title: string;
+  description: string;
+  highlights: string[];
+}
+
+const sectors: Sector[] = [
   {
     title: 'Healthcare Transformation',
     description: 'AI-powered diagnostic tools are achieving 90%+ accuracy in disease detection, particularly in cervical cancer and malaria screening. AI-enhanced telemedicine is expanding access to care in remote regions, while drone-based medical supply delivery—pioneered in Rwanda—is redefining emergency response logistics.',
@@ -27,7 +33,7 @@ const sectors = [
   },
   {
     title: 'Financial Services Revolution',
-    description: 'AI is driving mobile banking, risk assessment, and fraud detection. With over 55% of Africa’s population still unbanked, AI-powered fintech solutions are accelerating financial inclusion. Automated advisors and machine learning models are optimizing microfinance lending decisions and reducing risk in underserved markets.',
+    description: 'AI is driving mobile banking, risk assessment, and fraud detection. With over 55% of Africa\'s population still unbanked, AI-powered fintech solutions are accelerating financial inclusion. Automated advisors and machine learning models are optimizing microfinance lending decisions and reducing risk in underserved markets.',
     highlights: [
       'AI optimizing mobile banking, fraud detection, and risk assessment.',
       'Driving financial inclusion for previously underserved populations.',
@@ -36,7 +42,7 @@ const sectors = [
   },
   {
     title: 'Education & Public Services',
-    description: 'AI is revolutionizing education and public services, making learning more accessible and government operations more efficient. E-learning platforms powered by AI are helping bridge teacher shortages, offering personalized education tailored to student needs. In public services, AI-driven automation is streamlining governance, reducing bureaucratic inefficiencies, and improving service delivery to citizens. Additionally, AI is playing a crucial role in digital identity systems, with a goal of reaching 99.9% coverage by 2030, ensuring secure and verifiable identification for all.',
+    description: 'AI is revolutionizing education and public services, making learning more accessible and government operations more efficient. E-learning platforms powered by AI are helping bridge teacher shortages, offering personalized education tailored to student needs. In public services, AI-driven automation is streamlining governance, reducing bureaucratic inefficiencies, and improving service delivery to citizens.',
     highlights: [
       'Projected AI adoption in education to reach 70% by 2030.',
       'AI-enabled e-learning platforms addressing teacher shortages and enhancing personalized learning.',
@@ -47,7 +53,7 @@ const sectors = [
   },
 ];
 
-export function SectoralTransformationsCarousel() {
+export const SectoralTransformationsCarousel: React.FC = () => {
   const [index, setIndex] = useState(0);
 
   const prevSlide = () => {
@@ -70,7 +76,7 @@ export function SectoralTransformationsCarousel() {
           <h3 className="text-2xl font-bold text-primary">{sectors[index].title}</h3>
           <p className="text-foreground/70 mt-2">{sectors[index].description}</p>
           <ul className="mt-4 space-y-2 text-foreground/80">
-            {sectors[index].highlights.map((highlight, i) => (
+            {sectors[index].highlights.map((highlight: string, i: number) => (
               <li key={i} className="list-disc list-inside">{highlight}</li>
             ))}
           </ul>
@@ -85,6 +91,6 @@ export function SectoralTransformationsCarousel() {
       </button>
     </div>
   );
-}
+};
 
 export default SectoralTransformationsCarousel;
