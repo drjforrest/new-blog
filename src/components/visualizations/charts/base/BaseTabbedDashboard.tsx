@@ -24,9 +24,13 @@ export function BaseTabbedDashboard({
 
   return (
     <Tabs value={currentTab} onValueChange={setCurrentTab} className={`w-full ${className}`}>
-      <TabsList className={`grid w-full grid-cols-${tabs.length}`}>
+      <TabsList className="inline-flex w-full items-center justify-center rounded-lg bg-surface-muted/30 p-1 mb-6">
         {tabs.map((tab) => (
-          <TabsTrigger key={tab.id} value={tab.id}>
+          <TabsTrigger 
+            key={tab.id} 
+            value={tab.id}
+            className="flex-1 rounded-md px-3 py-2 text-sm font-medium transition-all data-[state=active]:bg-background data-[state=active]:shadow-sm"
+          >
             {tab.label}
           </TabsTrigger>
         ))}

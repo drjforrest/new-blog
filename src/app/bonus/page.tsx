@@ -44,22 +44,22 @@ export default function BonusContent() {
         </div>
 
         <Tabs defaultValue="development" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-1 lg:grid-cols-3 bg-primary/5 rounded-2xl p-2">
+          <TabsList className="flex w-full items-center justify-center rounded-xl bg-surface-muted p-1 mb-8">
             <TabsTrigger 
               value="development" 
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-xl py-3"
+              className="flex-1 rounded-lg py-3 text-sm font-medium transition-all data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               Development Dashboard
             </TabsTrigger>
             <TabsTrigger 
               value="economy"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-xl py-3"
+              className="flex-1 rounded-lg py-3 text-sm font-medium transition-all data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               Economic Dashboard
             </TabsTrigger>
             <TabsTrigger 
               value="vision"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-xl py-3"
+              className="flex-1 rounded-lg py-3 text-sm font-medium transition-all data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               Digital Vision
             </TabsTrigger>
@@ -67,7 +67,7 @@ export default function BonusContent() {
 
           <TabsContent value="development">
             <div className="space-y-8">
-              <React.Suspense fallback={<div className="animate-pulse h-64 bg-primary/5 rounded-lg" />}>
+              <React.Suspense fallback={<div className="animate-pulse h-64 bg-surface-muted rounded-lg" />}>
                 <Card className="p-6">
                   <AfricaDevelopmentDashboard />
                 </Card>
@@ -77,7 +77,7 @@ export default function BonusContent() {
 
           <TabsContent value="economy">
             <div className="space-y-8">
-              <React.Suspense fallback={<div className="animate-pulse h-64 bg-primary/5 rounded-lg" />}>
+              <React.Suspense fallback={<div className="animate-pulse h-64 bg-surface-muted rounded-lg" />}>
                 <Card className="p-6">
                   <AIEconomicDashboard />
                 </Card>
@@ -87,7 +87,7 @@ export default function BonusContent() {
 
           <TabsContent value="vision">
             <div className="space-y-8">
-              <React.Suspense fallback={<div className="animate-pulse h-64 bg-primary/5 rounded-lg" />}>
+              <React.Suspense fallback={<div className="animate-pulse h-64 bg-surface-muted rounded-lg" />}>
                 <Card className="p-6">
                   <DigitalVisionExplorer />
                 </Card>
