@@ -5,15 +5,16 @@ import { ExternalBlogCard } from '@/components/blog/ExternalBlogCard';
 import { FeatureSeriesCard } from '@/components/blog/FeatureSeriesCard';
 import { PresentationCard } from '@/components/presentations/PresentationCard';
 import dynamic from 'next/dynamic';
-import { Globe } from 'lucide-react/dist/esm/icons/globe';
-import { Brain } from 'lucide-react/dist/esm/icons/brain';
-import { ArrowRight } from 'lucide-react/dist/esm/icons/arrow-right';
+import { Globe, Brain, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 
-const CommentsSection = dynamic(() => import('@/components/blog/comments-section'), {
-  loading: () => <div>Loading comments...</div>
-});
+const CommentsSection = dynamic(
+  () => import('@/components/blog/comments-section').then(mod => mod.CommentsSection),
+  {
+    loading: () => <div>Loading comments...</div>
+  }
+);
 
 const SectionTitle = ({ children, id }: { children: React.ReactNode; id?: string }) => (
   <div className="text-center mb-16" id={id}>

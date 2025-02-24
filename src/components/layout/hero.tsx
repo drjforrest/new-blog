@@ -1,10 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { LineChart } from 'lucide-react/dist/esm/icons/line-chart';
-import { PenTool } from 'lucide-react/dist/esm/icons/pen-tool';
-import { Globe } from 'lucide-react/dist/esm/icons/globe';
-import { ArrowRight } from 'lucide-react/dist/esm/icons/arrow-right';
+import { LineChart, PenTool, Globe, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 
