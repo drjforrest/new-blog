@@ -33,9 +33,9 @@ export default function Home() {
       date: "2025-01-14"
     },
     {
-      title: "Global Health Technology Trends 2024",
+      title: "AI and Disinformation in Public Health",
       description: "Exploring how AI can be leveraged to combat digital disinformation in public health communications, including automated fact-checking and trend monitoring.",
-      href: "https://more-blog.drjforrest.com/posts/global-health-tech.html",
+      href: "https://more-blog.drjforrest.com/posts/ai-disinformation.html",
       date: "2025-02-17"
     }
   ];
@@ -43,19 +43,19 @@ export default function Home() {
   // Real presentations
   const presentations = [
     {
-      title: "AI Clinical Research 2025",
+      title: "AI Clinical Research 2025 Presentation",
       description: "Technical deep dive into AI-driven innovations transforming clinical trials, including implementation details and future perspectives.",
       duration: "45 min",
       date: "2025-02-22",
-      href: "https://more-blog.drjforrest.com/presentations/ai-clinical-research-2025.html",
+      href: "https://more-blog.drjforrest.com/marps/ai-clinical-research-2025/presentation.html",
       imageUrl: "/images/presentations/ai-clinical.png"
     },
     {
-      title: "Digital Health Innovations",
+      title: "Introduction to Marp Presentation",
       description: "A comprehensive guide to using Marp for creating beautiful, version-controlled presentations using Markdown syntax.",
       duration: "30 min",
       date: "2025-02-21",
-      href: "https://more-blog.drjforrest.com/presentations/digital-health-innovations.html",
+      href: "https://more-blog.drjforrest.com/marps/Marp%20on%20Marps/marp_on_marp.html",
       imageUrl: "/images/presentations/marp-guide.png"
     }
   ];
