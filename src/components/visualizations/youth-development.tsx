@@ -18,19 +18,24 @@ const data = [
 ];
 
 const metrics = [
-  { label: 'Digital Literacy Rate', value: '47%', trend: '+12% YoY' },
-  { label: 'Tech Education Programs', value: '2,845', trend: '+34% YoY' },
-  { label: 'Youth in Tech Startups', value: '185K', trend: '+28% YoY' },
-  { label: 'Innovation Hubs', value: '643', trend: '+15% YoY' },
+  { label: 'Youth in Workforce (Under 30)', value: '65%', trend: '+5% YoY' },
+  { label: 'Tech Startup Founders Under 30', value: '72K', trend: '+30% YoY' },
+  { label: 'Youth Participation in Online Learning', value: '4.2M', trend: '+40% YoY' },
+  { label: 'Projected Workforce Growth by 2040', value: '+500M', trend: 'Fastest Globally' },
 ];
 
-export function YouthDevelopment() {
+function YouthDevelopment() {
   return (
     <Card className="p-6">
       <div className="space-y-8">
-        <h3 className="text-lg font-semibold mb-4">African Youth Demographics & Digital Engagement</h3>
+        <h3 className="text-lg font-semibold mb-4">Africa's Young Population: A Digital-First Workforce</h3>
+        <p className="text-sm text-muted-foreground">
+          With **60% of its population under 25**, Africa has the world's youngest workforce, presenting an unprecedented opportunity for digital transformation and innovation.
+        </p>
         <Chart data={data} metrics={metrics} />
       </div>
     </Card>
   );
 }
+
+export default YouthDevelopment;

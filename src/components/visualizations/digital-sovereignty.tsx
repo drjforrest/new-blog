@@ -39,7 +39,7 @@ const data = [
   }
 ];
 
-export function DigitalSovereignty() {
+function DigitalSovereignty() {
   return (
     <Card className="p-6">
       <div className="flex justify-between items-start mb-4">
@@ -78,3 +78,5 @@ export function DigitalSovereignty() {
     </Card>
   );
 }
+
+export default DigitalSovereignty;

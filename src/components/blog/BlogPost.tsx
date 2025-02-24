@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
@@ -13,6 +14,7 @@ interface BlogPostLayoutProps {
   category?: string;
   description?: string;
   content: React.ReactNode;
+  bannerImage?: string;
 }
 
 export default function BlogPostLayout({
@@ -21,22 +23,47 @@ export default function BlogPostLayout({
   readingTime,
   category,
   description,
-  content
+  content,
+  bannerImage
 }: BlogPostLayoutProps) {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 }
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
+  const pageTransition = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: 0.4 }
   };
 
   return (
-    <motion.article 
-      initial="initial"
-      animate="animate"
-      className="max-w-4xl mx-auto px-4 py-12"
-    >
-      {/* Back Button */}
-      <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
+    <AnimatePresence mode="wait">
+      <motion.article 
+        {...pageTransition}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12"
+      >
+        {/* Banner Image */}
+        {bannerImage && (
+          <motion.div 
+            {...fadeInUp} 
+            transition={{ delay: 0.1 }}
+            className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] mb-8 rounded-xl overflow-hidden"
+          >
+            <Image
+              src={bannerImage}
+              alt={`Banner image for ${title}`}
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+        )}
+
+        {/* Back Button */}
+        <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
         <Link 
           href="/blog"
           className="inline-flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors mb-8 
@@ -123,6 +150,7 @@ export default function BlogPostLayout({
           </div>
         </Card>
       </motion.div>
-    </motion.article>
+      </motion.article>
+    </AnimatePresence>
   );
 }

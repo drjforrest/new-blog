@@ -41,10 +41,10 @@ export function BaseMultiLineChart({
       <LineChart
         data={data}
         margin={{
-          top: 5,
+          top: 20,
           right: 30,
           left: 20,
-          bottom: 5,
+          bottom: 20,
         }}
       >
         <CartesianGrid
@@ -66,7 +66,10 @@ export function BaseMultiLineChart({
           contentStyle={chartDefaults.tooltipStyle}
           formatter={tooltipFormatter}
         />
-        <Legend {...chartDefaults.legendStyle} />
+        <Legend 
+          {...chartDefaults.legendStyle}
+          wrapperStyle={{ paddingTop: '20px' }}
+        />
         {dataKeys.map((dataKey, index) => (
           <Line
             key={dataKey.key}

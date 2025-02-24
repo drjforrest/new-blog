@@ -9,7 +9,7 @@ const Chart = dynamic(
   { ssr: false }
 );
 
-export function AIEconomicDashboard() {
+function AIEconomicDashboard() {
   return (
     <Card className="w-full">
       <CardContent className="p-6">
@@ -18,3 +18,5 @@ export function AIEconomicDashboard() {
     </Card>
   );
 }
+
+export default AIEconomicDashboard;

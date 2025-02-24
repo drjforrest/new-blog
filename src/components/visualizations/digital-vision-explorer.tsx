@@ -9,7 +9,7 @@ const Chart = dynamic(
   { ssr: false }
 );
 
-export function DigitalVisionExplorer() {
+function DigitalVisionExplorer() {
   return (
     <Card className="p-6">
       <h3 className="text-lg font-semibold mb-4">Digital Vision Progress Tracking</h3>
@@ -17,3 +17,5 @@ export function DigitalVisionExplorer() {
     </Card>
   );
 }
+
+export default DigitalVisionExplorer;

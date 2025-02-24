@@ -81,7 +81,7 @@ const strategies = [
   }
 ];
 
-export function MitigationStrategies() {
+function MitigationStrategies() {
   return (
     <div className="space-y-4">
       {strategies.map((strategy, index) => (
@@ -121,3 +121,5 @@ export function MitigationStrategies() {
     </div>
   );
 }
+
+export default MitigationStrategies;

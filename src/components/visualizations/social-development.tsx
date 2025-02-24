@@ -51,7 +51,7 @@ const initiatives = [
   }
 ];
 
-export function SocialDevelopment() {
+function SocialDevelopment() {
   return (
     <div className="space-y-4">
       {initiatives.map((initiative, index) => (
@@ -77,3 +77,5 @@ export function SocialDevelopment() {
     </div>
   );
 }
+
+export default SocialDevelopment;

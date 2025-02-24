@@ -18,7 +18,7 @@ const data = [
   { year: '2025', value: 2.9 },
 ];
 
-export function AIMarketGrowth() {
+function AIMarketGrowth() {
   return (
     <Card className="p-6">
       <h3 className="text-lg font-semibold mb-4">AI Market Growth Projection</h3>
@@ -28,3 +28,5 @@ export function AIMarketGrowth() {
     </Card>
   );
 }
+
+export default AIMarketGrowth;

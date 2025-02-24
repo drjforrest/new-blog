@@ -49,7 +49,7 @@ const data = [
   }
 ];
 
-export function AIImplementationRoadmap() {
+function AIImplementationRoadmap() {
   return (
     <Card className="p-6">
       <div className="flex justify-between items-start mb-4">
@@ -92,3 +92,5 @@ export function AIImplementationRoadmap() {
     </Card>
   );
 }
+
+export default AIImplementationRoadmap;

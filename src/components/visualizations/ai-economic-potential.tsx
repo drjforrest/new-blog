@@ -20,7 +20,7 @@ const data = [
   { year: '2025', directImpact: 2.9, indirectImpact: 2.2, inducedImpact: 1.7 },
 ];
 
-export function AIEconomicPotential() {
+function AIEconomicPotential() {
   return (
     <Card className="p-6">
       <div className="flex justify-between items-start mb-4">
@@ -50,3 +50,5 @@ export function AIEconomicPotential() {
     </Card>
   );
 }
+
+export default AIEconomicPotential;

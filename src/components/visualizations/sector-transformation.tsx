@@ -39,7 +39,7 @@ const data = [
   }
 ];
 
-export function SectorTransformation() {
+function SectorTransformation() {
   return (
     <Card className="p-6">
       <div className="flex justify-between items-start mb-4">
@@ -77,3 +77,5 @@ export function SectorTransformation() {
     </Card>
   );
 }
+
+export default SectorTransformation;

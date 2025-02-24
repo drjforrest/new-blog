@@ -10,16 +10,36 @@ const Chart = dynamic(
   { ssr: false }
 );
 
-export function AfricaDevelopmentDashboard() {
+function AfricaDevelopmentDashboard() {
   return (
     <Card className="w-full">
       <CardContent className="p-6">
         <Tabs defaultValue="digital-access" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
-            <TabsTrigger value="digital-access">Digital Access</TabsTrigger>
-            <TabsTrigger value="skills-development">Skills Development</TabsTrigger>
-            <TabsTrigger value="infrastructure">Infrastructure</TabsTrigger>
-            <TabsTrigger value="innovation">Innovation Index</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 bg-muted/30 rounded-xl p-1">
+            <TabsTrigger 
+              value="digital-access" 
+              className="data-[state=active]:bg-background rounded-lg"
+            >
+              Digital Access
+            </TabsTrigger>
+            <TabsTrigger 
+              value="skills-development"
+              className="data-[state=active]:bg-background rounded-lg"
+            >
+              Skills Development
+            </TabsTrigger>
+            <TabsTrigger 
+              value="infrastructure"
+              className="data-[state=active]:bg-background rounded-lg"
+            >
+              Infrastructure
+            </TabsTrigger>
+            <TabsTrigger 
+              value="innovation"
+              className="data-[state=active]:bg-background rounded-lg"
+            >
+              Innovation Index
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="digital-access">
             <div className="pt-6">
@@ -46,3 +66,5 @@ export function AfricaDevelopmentDashboard() {
     </Card>
   );
 }
+
+export default AfricaDevelopmentDashboard;
