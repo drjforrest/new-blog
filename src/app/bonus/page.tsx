@@ -99,7 +99,7 @@ export default function InteractiveDashboards() {
         <div className="max-w-4xl mx-auto">
           <React.Suspense fallback={<div className="animate-pulse h-64 bg-surface-muted rounded-lg" />}>
             <Card className="p-6">
-              {activeTab === 'development' && <AfricaDevelopmentDashboard />}
+              {activeTab === 'development' && <AfricaDevelopmentDashboard activeTab={activeSubTab} />}
               {activeTab === 'economy' && <AIEconomicDashboard />}
               {activeTab === 'vision' && <DigitalVisionExplorer />}
             </Card>
